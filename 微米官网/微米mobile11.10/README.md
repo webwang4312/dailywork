@@ -1,5 +1,5 @@
 # textone
-改善了二维码区域，改善faq线条问题，未改善页面返回上一页问题
+微米官网手机端源代码
 ## Project setup
 ```
 npm install

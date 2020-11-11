@@ -1,8 +1,5 @@
 # textone
-完成表格动态添加行数
-完成页码的跳转
-搜索区块的限制code=200
-根据交易哈希搜索表格的v-if实现
+大V申请源代码
 ## Project setup
 ```
 npm install

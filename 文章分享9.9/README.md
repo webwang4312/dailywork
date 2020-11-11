@@ -1,5 +1,5 @@
 # textone
-
+文章详情的分享
 ## Project setup
 ```
 npm install

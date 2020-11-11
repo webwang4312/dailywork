@@ -1,5 +1,5 @@
 # rule
-
+邀请，答题，生态权益规则
 ## Project setup
 ```
 npm install

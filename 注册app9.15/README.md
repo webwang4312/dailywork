@@ -1,5 +1,5 @@
 # zhuceapp
-
+注册app
 ## Project setup
 ```
 npm install
