@@ -204,10 +204,7 @@
               <div></div>
               <div>投票阶段</div>
               <div id="bohuir">
-                <img
-                  src="@assets/images/detail/组 1895.png"
-                  class="bohuiimg"
-                />
+                <img src="@assets/images/detail/组 1895.png" class="bohuiimg" />
                 <span class="bohui" id="green">
                   投票同意
                 </span>
@@ -306,15 +303,15 @@
             <div class="bohui"></div>
             <div class="agreereject_detail " id="display">
               <div class="finish2"></div>
-              <div>
-                <!-- <img
+              <!-- <div> -->
+              <!-- <img
                   src="../assets/images/detail/组 1895.png"
                   class="bohuiimg"
                 /> -->
-                <!-- <span class="green">
+              <!-- <span class="green">
                   监督同意
                 </span> -->
-              </div>
+              <!-- </div> -->
             </div>
           </div>
         </div>
@@ -337,15 +334,15 @@
             <div class="bohui"></div>
             <div class="agreereject_detail " id="display">
               <div class="finish3"></div>
-              <div>
-                <!-- <img
+              <!-- <div> -->
+              <!-- <img
                   src="../assets/images/detail/组 1895 拷贝.png"
                   class="bohuiimg"
                 />
                 <span class="bohui">
                   监督驳回
                 </span> -->
-              </div>
+              <!-- </div> -->
             </div>
           </div>
         </div>
@@ -404,11 +401,11 @@
               id="specialprogress"
             ></el-progress>
             <div class="agreereject_detail">
-              <div>
+              <!-- <div> -->
                 <!-- <img src="@assets/images/detail/矩形 45 拷贝.png" /> 反对{{
                   finishLevel.consCount
                 }} -->
-              </div>
+              <!-- </div> -->
 
               <!-- <img
                 src="../assets/images/proposal/多边形 1.png"
@@ -416,6 +413,18 @@
                 class="duobian"
                 id="duobian1"
               /> -->
+              <div v-if="percentage5 == 0" id="first1percentage5">
+                <img
+                  src="../assets/images/detail/组 1890 拷贝.png"
+                  @click.once="agreeaction"
+                  v-if="deptId === '003'"
+                />
+                <span v-if="deptId === '003'" @click.once="agreeaction"
+                  >赞成0</span
+                >
+                <span v-else>赞成0</span>
+                <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
+              </div>
               <div v-if="percentage5 == 33" id="firstpercentage5">
                 <img
                   src="../assets/images/detail/组 1890 拷贝.png"
@@ -506,9 +515,8 @@
 </template>
 
 <script>
-
 var qs = require("qs");
-import {BASEURL} from '@api/api';
+import { BASEURL } from "@api/api";
 import slider from "@components/common/slider";
 import votenumber from "../components/common/voteNumber";
 import vFooter from "@components/common/vFooter";
@@ -639,7 +647,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/updateMotion",
+          `${BASEURL}` + "/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -668,7 +676,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/updateMotion",
+          `${BASEURL}` + "/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -698,7 +706,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/updateMotion",
+          `${BASEURL}` + "/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -725,7 +733,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/updateMotion",
+          `${BASEURL}` + "/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -762,7 +770,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/updateMotion",
+          `${BASEURL}` + "/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -786,7 +794,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/updateMotion",
+          `${BASEURL}` + "/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -811,7 +819,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/motionDetail ",
+          `${BASEURL}` + "/weimioffice/vote/motionDetail ",
           qs.stringify({
             activityId: this.$route.query.activityId,
             userId: localStorage.getItem("userId"),
@@ -856,6 +864,7 @@ export default {
             // result.finishLevel.prosCount = 3;
             // result.finishLevel.consCount= 2
             if (result.state == 3 || result.state == -4) {
+              console.log(result.finishLevel.prosCount);
               // 人物权限1/0
               // result.isAllActioned = 1;
               // result.implPlan = "";
@@ -942,7 +951,7 @@ export default {
                     if (result.finishLevel.prosCount === 3) {
                       this.percentage5 = Number(100);
                     }
-
+// console.log(this.percentage5);
                     // let fenzileft = Number(result.finishLevel.consCount * 100);
                     // let fenziright =
                     //   result.finishLevel.prosCount +
@@ -1199,7 +1208,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            `${BASEURL}`+"/weimioffice/vote/addLogs",
+            `${BASEURL}` + "/weimioffice/vote/addLogs",
             qs.stringify({
               userId: localStorage.getItem("userId"),
               activityId: this.$route.query.activityId,
@@ -1229,7 +1238,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            `${BASEURL}`+"/weimioffice/vote/commitImplPlan",
+            `${BASEURL}` + "/weimioffice/vote/commitImplPlan",
             qs.stringify({
               userId: localStorage.getItem("userId"),
               activityId: this.$route.query.activityId,
@@ -1260,7 +1269,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/sendAllActionLogs",
+          `${BASEURL}` + "/weimioffice/vote/sendAllActionLogs",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -1345,14 +1354,13 @@ export default {
 };
 </script>
 <style lang="less">
-#vote_plan{
-  
-font-size: 16px;
-font-family: '苹方-简';
-font-weight: normal;
-line-height: 22px;
-color: #FFFFFF;
-opacity: 1;
+#vote_plan {
+  font-size: 16px;
+  font-family: "苹方-简";
+  font-weight: normal;
+  line-height: 22px;
+  color: #ffffff;
+  opacity: 1;
 }
 .buttonprorej {
   div:nth-child(1) {
@@ -1488,13 +1496,13 @@ opacity: 1;
 }
 #duobian3 {
 }
-#firstpercentage5 {
-  display: flex;
+#first1percentage5{
+   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  left: -200px;
+  
   width: 80px;
   height: 30px;
   border: 1px solid #009fcd;
@@ -1504,14 +1512,17 @@ opacity: 1;
     width: 14.03px;
     height: 13.03px;
   }
+  span{
+    color:#009fcd ;
+  }
 }
-#secondpercentage5 {
+#firstpercentage5 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  left: -100px;
+  left: 66px;
   width: 80px;
   height: 30px;
   border: 1px solid #009fcd;
@@ -1520,6 +1531,29 @@ opacity: 1;
   img {
     width: 14.03px;
     height: 13.03px;
+  }
+   span{
+    color:#009fcd ;
+  }
+}
+#secondpercentage5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  left: 160px;
+  width: 80px;
+  height: 30px;
+  border: 1px solid #009fcd;
+  opacity: 1;
+  border-radius: 15px;
+  img {
+    width: 14.03px;
+    height: 13.03px;
+  }
+   span{
+    color:#009fcd ;
   }
 }
 #thirdpercentage5 {
@@ -1540,7 +1574,7 @@ opacity: 1;
   color: #ffffff;
   opacity: 0.8;
   li {
-    font-size: 14px;
+    font-size: 14px !important;
     font-family: "苹方-简";
     font-weight: normal;
     line-height: 21px;
@@ -1686,6 +1720,13 @@ opacity: 1;
   flex-direction: column;
   width: 315px;
   margin: 0 auto;
+  div:nth-child(1) {
+    width: 315px;
+    height: 9px;
+    background: rgba(31, 145, 211, 1);
+    border-radius: 5px;
+    border: none;
+  }
   div:nth-child(2) {
     padding-right: 0;
     display: flex;
@@ -1846,7 +1887,7 @@ opacity: 1;
         height: auto;
         background: #333333;
         border-radius: 10px;
-        margin-top: 60px;
+        margin-top: 15px;
 
         textarea {
           width: 315px;
@@ -1873,14 +1914,7 @@ opacity: 1;
           margin: 0 auto;
           margin-top: 40px;
         }
-        .finish2 {
-          width: 100%;
-          height: 10px;
-          background: #1ed238 !important;
-          border-radius: 5px;
-          margin: 0 auto;
-          margin-top: 0px;
-        }
+
         .finish3 {
           width: 315px;
           height: 9px;
@@ -1934,11 +1968,14 @@ opacity: 1;
           }
         }
         .agreereject_detail {
-          width: 100%;
+          width: 90%;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
+          align-items: center;
           padding-top: 10px;
+          text-align: center;
+          margin: 0 auto;
           .bohui {
             font-size: 14px;
             font-family: "苹方-简";
@@ -1955,22 +1992,31 @@ opacity: 1;
             padding-left: 90%;
             padding-top: 4px;
           }
-
           div:nth-child(1) {
-            font-size: 14px;
-            font-family: PingFang SC;
-            font-weight: 400;
+            height: 30px;
+            border: 1px solid #d93e3e;
+            opacity: 1;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: "苹方-简";
+            font-weight: normal;
             color: #c03535;
-            line-height: 22px;
-            padding-left: 5%;
+            line-height: 30px;
+            padding-left: 10px;
+            padding-right: 10px;
           }
           div:nth-child(2) {
-            font-size: 14px;
-            font-family: PingFang SC;
-            font-weight: 400;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #009fcd;
+            opacity: 1;
+            border-radius: 15px;
+            font-size: 12px;
+            font-family: "苹方-简";
+            font-weight: normal;
             color: #009fcd;
-            line-height: 22px;
-            padding-right: 5%;
+            padding-left: 10px;
+            padding-right: 10px;
           }
           div:nth-child(3) {
             font-size: 14px;

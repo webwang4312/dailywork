@@ -75,10 +75,10 @@ export default {
     //console.log(this.$route.query.content_id);
   },
 mounted(){
-  // window.addEventListener("scroll", this.handleScroll);
+  window.addEventListener("scroll", this.handleScroll);
 },
 destroyed(){
-  //  window.removeEventListener("scroll", this.handleScroll);
+   window.removeEventListener("scroll", this.handleScroll);
 },
   methods: {
     handleScroll() {
@@ -86,7 +86,7 @@ destroyed(){
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop;
-       console.log(scrollTop);
+      //  console.log(scrollTop);
       if (scrollTop > 10) {
         this.sticky = true;
       }

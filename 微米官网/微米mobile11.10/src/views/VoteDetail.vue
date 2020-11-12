@@ -77,7 +77,7 @@
               </div>
               <div>
                 已赞成{{ prosAmount }}
-               
+
                 <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
               </div>
             </div>
@@ -85,13 +85,13 @@
         </div>
       </div>
     </div>
-     <v-footer></v-footer>
+    <v-footer></v-footer>
   </div>
 </template>
 
 <script>
 var qs = require("qs");
-import {BASEURL} from '@api/api';
+import { BASEURL } from "@api/api";
 import slider from "@components/common/slider";
 import votenumber from "../components/common/voteNumber";
 import vFooter from "@components/common/vFooter";
@@ -116,7 +116,7 @@ export default {
       createtime: "",
     };
   },
-  components: { votenumber, slider,vFooter },
+  components: { votenumber, slider, vFooter },
   created() {
     //  console.log(this.$route.query.state);
     this.voteDetail();
@@ -182,7 +182,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/optionDetail",
+          `${BASEURL}` + "/weimioffice/vote/optionDetail",
           qs.stringify({
             activityId: this.$route.query.activityId,
           })
@@ -495,42 +495,44 @@ export default {
           }
         }
         .agreereject_detail {
-          width:315px;
+          width: 315px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           padding-top: 10px;
           margin: 0 auto;
           div:nth-child(1) {
-            width: 78px;
-height: 30px;
-line-height: 30px;
-border: 1px solid #D93E3E;
-opacity: 1;
-border-radius: 15px;
+            // width: 78px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #d93e3e;
+            opacity: 1;
+            border-radius: 15px;
             font-size: 12px;
             font-family: "苹方-简";
             font-weight: normal;
-           text-align: center;
+            text-align: center;
             color: #d93e3e;
             opacity: 1;
-          
+            padding-left: 10px;
+            padding-right: 10px;
           }
           div:nth-child(2) {
-            width: 78px;
-height: 30px;
-border: 1px solid #009FCD;
-opacity: 1;
-border-radius: 15px;
-line-height: 30px;
-              text-align: center;
+            // width: 78px;
+            height: 30px;
+            border: 1px solid #009fcd;
+            opacity: 1;
+            border-radius: 15px;
+            line-height: 30px;
+            text-align: center;
             font-size: 12px;
             font-family: "苹方-简";
             font-weight: normal;
-          
+
             color: #009fcd;
             opacity: 1;
-          
+            padding-left: 10px;
+            padding-right: 10px;
           }
         }
         .buttonprorej {
@@ -543,7 +545,6 @@ line-height: 30px;
           img {
           }
           div:nth-child(1) {
-          
             height: 30px;
             border: 1px solid #d93e3e;
             opacity: 1;
@@ -563,14 +564,13 @@ line-height: 30px;
             }
             span {
               padding-left: 10px;
-               padding-right: 10px;
+              padding-right: 10px;
               // position: relative;
               // top: -5px;
               // left: -6px;
             }
           }
           div:nth-child(2) {
-          
             height: 30px;
             border: 1px solid #009fcd;
             opacity: 1;
@@ -589,7 +589,7 @@ line-height: 30px;
             }
             span {
               padding-left: 10px;
-               padding-right: 10px;
+              padding-right: 10px;
             }
           }
         }

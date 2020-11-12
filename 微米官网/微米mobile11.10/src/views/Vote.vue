@@ -458,7 +458,7 @@ export default {
           })
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           // 全部类型
           this.voteall = res.data.result.list;
           // 页数
@@ -750,7 +750,7 @@ export default {
     },
     // 跳转投票详情页
     goToVoteDetail(index, state) {
-      console.log(index,state);
+      // console.log(index,state);
       this.$router.push({
         path: "/votedetail",
         query: { activityId: index, state: state },

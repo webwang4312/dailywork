@@ -6,14 +6,14 @@
       :style="{ width: '45%', height: '100%' }"
       ><div class="slide">
         <div class="baoguo">
-          <span class="lefticon" @click="login" v-if="$store.state.login"
-            >  {{ $t("slider[0]") }}</span
+          <span class="lefticon" @click="login" v-if="$store.state.login">
+            {{ $t("slider[0]") }}</span
           >
           <span class="lefticon blue" v-if="!$store.state.login">{{
             $store.state.username
           }}</span>
           <p class="lefticon" v-if="!$store.state.login" @click="exitLogin">
-           {{ $t("slider[1]") }}
+            {{ $t("slider[1]") }}
           </p>
         </div>
         <ul class="tiaozhuan">
@@ -51,7 +51,8 @@
             <span
               v-if="!$store.state.fastoken"
               style="color: rgba(0, 159, 205, 1)"
-              > {{ $t("slider[2]") }}</span
+            >
+              {{ $t("slider[2]") }}</span
             >
             <span v-if="$store.state.fastoken"> {{ $t("slider[2]") }}</span>
           </li>
@@ -69,7 +70,8 @@
             <span
               v-if="!$store.state.fastoken2"
               style="color: rgba(0, 159, 205, 1)"
-              > {{ $t("slider[3]") }}</span
+            >
+              {{ $t("slider[3]") }}</span
             >
             <span v-if="$store.state.fastoken2"> {{ $t("slider[3]") }}</span>
           </li>
@@ -92,8 +94,8 @@
   </div>
 </template>
 <script>
-import cn from '../../i18n/cn';
-import en from '../../i18n/en';
+import cn from "../../i18n/cn";
+import en from "../../i18n/en";
 export default {
   inject: ["reload"],
   data() {
@@ -160,11 +162,10 @@ export default {
   },
   created() {
     this.$store.commit("showSliderFalse");
-    if(this.$i18n.locale == "cn"){
-      this.nav=cn.nav
-    }
-    else{
-       this.nav=en.nav
+    if (this.$i18n.locale == "cn") {
+      this.nav = cn.nav;
+    } else {
+      this.nav = en.nav;
     }
     if (
       localStorage.getItem("token") === "" ||
@@ -186,7 +187,6 @@ export default {
     });
   },
   mounted() {
-
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {
@@ -300,24 +300,23 @@ export default {
 .slide {
   width: 100%;
   height: auto;
-  min-height: 130vh;
-display: flex;
-flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: rgba(51, 51, 51, 1) !important;
   opacity: 1 !important;
-
+  padding-bottom: 50px;
   .blue {
     color: rgba(0, 159, 205, 1) !important;
   }
   .baoguo {
     width: 100%;
     height: auto;
-   padding-top: 64px;
-   padding-left: 24px;
-   padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 24px;
+    padding-bottom: 20px;
   }
   .lefticon {
-   
     position: relative;
     left: 0px;
     top: 0px;
@@ -339,9 +338,9 @@ flex-direction: column;
   }
   .tiaozhuan {
     width: 100%;
-   
-    min-height: 80vh;
-    
+    height: auto;
+    // min-height: 80vh;
+
     li {
       width: 100%;
       height: 65px;

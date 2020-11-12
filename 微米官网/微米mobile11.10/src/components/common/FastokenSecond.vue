@@ -6,13 +6,13 @@
         <!-- 转入钱包地址 -->
         <div class="telzong">
           <div class="address">
-            <label> 钱包地址</label>
+            <label>{{ $t("fastokensecond[0]") }}</label>
             <input type="text" v-model="address" disabled="true" />
           </div>
         </div>
         <div class="but_zong">
           <button class="submit">
-            已绑定
+           {{ $t("fastokensecond[1]") }}
           </button>
         </div>
       </div>

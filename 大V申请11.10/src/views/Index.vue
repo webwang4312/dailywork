@@ -1318,10 +1318,11 @@ export default {
       //  console.log(form);
       this.$http
       // 测试版
+      //47.99.57.15
       // 47.101.145.253
       // 正式版
       // 47.105.215.191
-        .post("http://47.99.57.15/batchupfile", form, "form")
+        .post("http://47.105.215.191/batchupfile", form, "form")
         .then((res) => {
           // console.log(res);
           if ((res.data.code = 200)) {
@@ -1421,7 +1422,7 @@ export default {
         // 测试版
         // 192.168.1.60
         //47.105.215.191
-          .post("http://192.168.1.60/weimi/news/settlement", datalist, {
+          .post("http://47.105.215.191/weimi/news/settlement", datalist, {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
           .then((res) => {
@@ -1972,7 +1973,7 @@ background: rgba(51, 51, 51, 0.1);
     textarea {
       width: 305px;
       height: 60px;
-      opacity: 1;
+     color: rgba(51, 51, 51,0.5);
       border-radius: 25px;
       margin: 0 auto;
       position: relative;
