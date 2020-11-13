@@ -62,7 +62,7 @@ const en = {
     content: ['UENC address:', 'Ranking', 'Address', 'Amount', 'Percentage','Total','Item']
   },
   notfound:['Sorry, the data you want could not be found, please search again...'],
-  wallet: ['Manage your digital assets', 'Fastoken is a digital asset management software that provides a safe, secure, easy-to-use, and powerful wallet application for ordinary users and miners. It is currently in the second phase of the public beta. ', 'Fastoken provides functions such as transfer transactions, secure storage and fast payment. Transfer transactions are fast and safe and secure. At the current public beta phase, a transaction can be completed in 1 second, and the historical transaction records in the wallet account are clear at a glance. By adopting a decentralized design, the wallet provides convenient and fair mining functions for miners and users can freely choose stable nodes for broadcast transactions. '],
+  wallet: ['Manage your digital assets', 'Fastoken is a digital asset management software that provides a safe, secure, easy-to-use, and powerful wallet application for ordinary users and miners. The UENC mainnet is currently online.', 'Fastoken provides functions such as transfer transactions, secure storage and fast payment. Transfer transactions are fast and safe and secure. At the current public beta phase, a transaction can be completed in 1 second, and the historical transaction records in the wallet account are clear at a glance. By adopting a decentralized design, the wallet provides convenient and fair mining functions for miners and users can freely choose stable nodes for broadcast transactions. '],
   ...enLocale
 };
 

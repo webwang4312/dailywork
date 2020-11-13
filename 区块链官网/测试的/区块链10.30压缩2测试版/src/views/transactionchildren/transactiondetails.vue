@@ -190,9 +190,38 @@ export default {
                 translist[i].transaction_hash.substring(0, 10) + "...";
               // obj.time = this.timestampToTime(Number(strdate));
               obj.amount = translist[i].amount;
-              obj.from_address =
-                translist[i].from_address.substring(0, 10) + "...";
-              obj.to_address = translist[i].to_address.substring(0, 10) + "...";
+             if (
+                translist[i].to_address ==
+                  "0000000000000000000000000000000000" ||
+                translist[i].pledge == "1"
+              ) {
+                // 从
+                obj.from_address =
+                  translist[i].from_address.substring(0, 10) + "...";
+                if (this.nowLang == "cn") {
+                  obj.to_address = "质押";
+                } else {
+                  obj.to_address = "Pledge";
+                }
+              } else if (
+                translist[i].from_address == translist[i].to_address ||
+                translist[i].redeem == "1"
+              ) {
+                if (this.nowLang == "cn") {
+                  // 从
+                  obj.from_address = "质押";
+                } else {
+                  obj.from_address = "Pledge";
+                }
+                // 至
+                obj.to_address =
+                  translist[i].to_address.substring(0, 10) + "...";
+              } else {
+                obj.from_address =
+                  translist[i].from_address.substring(0, 10) + "...";
+                obj.to_address =
+                  translist[i].to_address.substring(0, 10) + "...";
+              }
               obj.gas = translist[i].gas;
               // console.log(obj);
               blockData[i] = obj;

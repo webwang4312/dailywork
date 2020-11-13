@@ -194,8 +194,7 @@ export default {
           if ((res.status = 200)) {
             this.loading = false;
           }
-
-          // console.log(res);
+           console.log(res);
           this.totalNum = res.data[0].total_record[0].total_record;
           //console.log(this.totalNum);
           if (this.nowLang == "cn") {

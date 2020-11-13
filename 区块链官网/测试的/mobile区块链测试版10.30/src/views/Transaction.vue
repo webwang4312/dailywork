@@ -216,9 +216,59 @@ export default {
           this.fullscreenLoading = false;
           this.listloading = false;
           this.total = res.data[0].total_page[0].totalPageNum;
-          this.translist = this.translist.concat(
+           this.translist = this.translist.concat(
             res.data[0].transaction_list_results
           );
+           for (
+              let j = 0;
+              j < res.data[0].transaction_list_results.length + 1;
+              j++
+            ) {
+              if (
+                res.data[0].transaction_list_results[j].to_address ==
+                  "0000000000000000000000000000000000" ||
+                res.data[0].transaction_list_results[j].pledge == "1"
+              ) {
+                // 从
+                res.data[0].transaction_list_results[j].from_address =
+                  res.data[0].transaction_list_results[
+                    j
+                  ].from_address.substring(0, 10) + "...";
+                if (this.nowLang == "cn") {
+                 res.data[0].transaction_list_results[j].to_address = "质押";
+                } else {
+                 res.data[0].transaction_list_results[j].to_address = "Pledge";
+                }
+              } else if (
+                res.data[0].transaction_list_results[j].from_address ==
+                  res.data[0].transaction_list_results[j].to_address ||
+                res.data[0].transaction_list_results[j].redeem == "1"
+              ) {
+                if (this.nowLang == "cn") {
+                  // 从
+                 res.data[0].transaction_list_results[j].from_address = "质押";
+                } else {
+                 res.data[0].transaction_list_results[j].from_address = "Pledge";
+                }
+                // 至
+               res.data[0].transaction_list_results[j].to_address =
+                  res.data[0].transaction_list_results[j].to_address.substring(
+                    0,
+                    10
+                  ) + "...";
+              } else {
+                res.data[0].transaction_list_results[j].from_address =
+                  res.data[0].transaction_list_results[
+                    j
+                  ].from_address.substring(0, 10) + "...";
+               res.data[0].transaction_list_results[j].to_address =
+                  res.data[0].transaction_list_results[j].to_address.substring(
+                    0,
+                    10
+                  ) + "...";
+              }
+            }
+         
           if (this.nowLang == "cn") {
             for (
               let i = 0;

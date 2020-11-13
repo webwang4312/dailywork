@@ -205,6 +205,7 @@ export default {
               query: { addressvalue: this.inputvalue },
             });
           } else {
+             this.fullscreenLoading = false;
             this.$router.push({
               path: "/notfound",
               query: {},
@@ -235,6 +236,7 @@ export default {
               },
             });
           } else {
+             this.fullscreenLoading = false;
             this.$router.push({
               path: "/notfound",
               query: {},
@@ -263,6 +265,7 @@ export default {
               },
             });
           } else {
+             this.fullscreenLoading = false;
             this.$router.push({
               path: "/notfound",
               query: {},
@@ -281,13 +284,14 @@ export default {
           },
         })
         .then((res) => {
-          if (res.data[0].search_main_transactionInfo[0].from_address !== "") {
+          if (res.data[0].search_main_transactionInfo.length !==0) {
             this.fullscreenLoading = false;
             this.$router.push({
               path: "/blockdetails",
               query: { blockhaxi: this.inputvalue },
             });
           } else {
+             this.fullscreenLoading = false;
             this.$router.push({
               path: "/notfound",
               query: {},

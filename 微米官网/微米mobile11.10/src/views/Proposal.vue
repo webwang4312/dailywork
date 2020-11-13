@@ -96,7 +96,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="voteall.length !== 0">
             <van-pagination
               v-model="voteallnumber"
               :total-items="alltotal"
@@ -139,7 +143,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="votein.length !== 0">
             <van-pagination
               v-model="voteinnumber"
               :total-items="intotal"
@@ -181,7 +189,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="voteend.length !== 0">
             <van-pagination
               v-model="voteendnumber"
               :total-items="endtotal"
@@ -224,7 +236,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="voteagree.length !== 0">
             <van-pagination
               v-model="voteagreenumber"
               :total-items="agreetotal"
@@ -267,7 +283,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="votereject.length !== 0">
             <van-pagination
               v-model="voterejectnumber"
               :total-items="rejecttotal"
@@ -310,7 +330,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="votejiean.length !== 0">
             <van-pagination
               v-model="votejieannumber"
               :total-items="jieantotal"
@@ -369,7 +393,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="votebohui.length !== 0">
             <van-pagination
               v-model="votebohuinumber"
               :total-items="bohuitotal"
@@ -458,7 +486,11 @@
               </div>
             </li>
           </ul>
-          <div class="block">
+          <div v-else class="placeholder_map">
+            <img src="../assets/images/detail/矢量智能对象.png" />
+            <p>暂无更多数据</p>
+          </div>
+          <div class="block" v-if="votealllist.length !== 0">
             <van-pagination
               v-model="votealllistnumber"
               :total-items="alllisttotal"
@@ -477,7 +509,7 @@
 
 <script>
 var qs = require("qs");
-import {BASEURL} from '@api/api';
+import { BASEURL } from "@api/api";
 import slider from "@components/common/slider";
 import vfooter from "@components/common/vFooter";
 export default {
@@ -651,7 +683,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 0,
             pageNum: this.votealllistnumber,
@@ -716,7 +748,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity",
           qs.stringify({
             type: 0,
             pageNum: this.voteallnumber,
@@ -767,7 +799,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity",
           qs.stringify({
             type: 1,
             pageNum: this.voteinnumber,
@@ -815,7 +847,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 2,
             pageNum: this.voteendnumber,
@@ -863,7 +895,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 3,
             pageNum: this.voteagreenumber,
@@ -911,7 +943,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 4,
             pageNum: this.voterejectnumber,
@@ -958,7 +990,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 5,
             pageNum: this.votejieannumber,
@@ -1005,7 +1037,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity",
           qs.stringify({
             type: -5,
             pageNum: this.votebohuinumber,
@@ -1051,6 +1083,21 @@ export default {
 };
 </script>
 <style lang="less">
+.placeholder_map {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  img {
+    width: 300px;
+  }
+  p {
+    font-size: 14px;
+    font-family: "苹方-简";
+    font-weight: normal;
+    color: #ffffff;
+    line-height: 22px;
+  }
+}
 .redcolor {
   font-size: 14px;
   font-family: "苹方-简";

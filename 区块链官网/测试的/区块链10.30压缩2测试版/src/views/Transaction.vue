@@ -192,7 +192,7 @@ export default {
         })
         .then((res) => {
           this.loading = false;
-          console.log(res);
+          // console.log(res);
           // 取得页数总数
           this.totalNum = res.data[0].total_record[0].total_record;
           // console.log(this.totalNum);

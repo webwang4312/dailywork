@@ -1,5 +1,5 @@
 <template>
-  <div class="headertop" :class="{ sticky: sticky }">
+  <div class="headertop" >
     <div class="headerzong">
       <div class="header-left">
         <img src="@assets/images/header/logo.png" />
@@ -184,13 +184,13 @@ export default {
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
   border-radius: 16px;
 }
-.sticky {
-  width: 1200px !important;
-  height: 120px !important;
-  position: fixed !important;
-  top: 0px !important;
-  margin: 0 auto !important;
-}
+// .sticky {
+//   width: 1200px !important;
+//   height: 120px !important;
+//   position: fixed !important;
+//   top: 0px !important;
+//   margin: 0 auto !important;
+// }
 // 外部头部区域
 li {
   list-style: none;
@@ -314,11 +314,11 @@ li {
           flex-direction: row;
           .title {
             position: absolute;
-            left: 57px;
+            left: 50px;
             top: 7px;
           }
           img {
-            width: 121px;
+            width: 141px;
             height: 60px;
             position: relative;
             top: 30px;
@@ -326,7 +326,7 @@ li {
           }
           li img {
             position: absolute;
-            left: 19px;
+            left: 11px;
             width: 32px;
             height: 34.19px;
             top: 43px;

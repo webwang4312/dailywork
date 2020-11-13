@@ -325,7 +325,7 @@ export default {
     async rank() {
       let that = this;
       await that.$http.get("/search_top_n").then((res) => {
-        console.log(res);
+        // console.log(res);
         this.tabledataall = res.data.count[0].count;
 
         for (let i = 0; i < res.data.topN.length; i++) {
@@ -534,7 +534,7 @@ export default {
       that.$http
         .get("")
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           for (var i = 0; i < res.data[0].get_avgGas_for_100.length + 1; i++) {
             ranliaoaverage.unshift(
               res.data[0].get_avgGas_for_100[i].block_height_for_100
@@ -692,7 +692,7 @@ export default {
         .get("")
         .then((res) => {
           this.loading = false;
-          console.log(res);
+          // console.log(res);
           this.money = res.data[0].usdt[0].usdt;
           this.money2 = res.data[0].usdt[0].rmb;
           // 获取首页数据集合

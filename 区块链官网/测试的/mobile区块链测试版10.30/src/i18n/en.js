@@ -33,7 +33,7 @@ const en = {
   page: ['first', 'last'],
   publicsection: ['UENC Mainnet', 'Search', 'Search Address, Transaction/block hash, Block Height, etc.', 'Block Height',
     'TX Amount', 'TX volume', 'From', 'To',
-    'Time', 'View More', 'Home Page', 'End Page','Block Height'],
+    'Time', 'View More', 'Home Page', 'End Page','Block Height','amount_detail'],
   home: {
     cardleft: ['24H TX Amount', '24H TX volume', 'Block Reward', ' Remaining Reward','Block explorer'],
     cardright: ['Average value of transaction fuel fee (first 100 blocks)', 'Number of transactions per day'],

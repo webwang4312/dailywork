@@ -70,13 +70,17 @@
             <p>{{ $t("transaction.content2[5]") }}:</p>
             <p>{{ transactionlist[0].transaction_time }}</p>
           </li>
-          <li>
+           <li>
             <p>{{ $t("publicsection[6]") }}:</p>
             <p>{{ transactionlist[0].from_address }}</p>
           </li>
           <li>
             <p>{{ $t("publicsection[7]") }}:</p>
-            <p>{{ transactionlist[0].to_address }}</p>
+            <p class="toright" v-html="transactionlist[0].to_address"></p>
+          </li>
+          <li v-if="amount_detail">
+            <p>{{ $t("publicsection[13]") }}:</p>
+            <p class="toright" v-html="transactionlist[0].amount_detail"></p>
           </li>
           <li>
             <p>{{ $t("publicsection[5]") }}:</p>
@@ -425,12 +429,74 @@ export default {
           this.transactionlist[0].transaction_time = this.timestampToTime(
             res.data[0].search_main_transaction_detailInfo[0].transaction_time
           );
-          // 从
-          this.transactionlist[0].from_address =
-            res.data[0].search_main_transaction_detailInfo[0].from_address;
-          // 至
-          this.transactionlist[0].to_address =
-            res.data[0].search_main_transaction_detailInfo[0].to_address;
+          if (
+            res.data[0].search_main_transaction_detailInfo[0].to_address ==
+              "0000000000000000000000000000000000" ||
+            res.data[0].search_main_transaction_detailInfo[0].pledge == "1"
+          ) {
+            // 从
+            this.transactionlist[0].from_address =
+              res.data[0].search_main_transaction_detailInfo[0].from_address;
+            if (this.nowLang == "cn") {
+              this.transactionlist[0].to_address = "质押";
+            } else {
+              this.transactionlist[0].to_address = "Pledge";
+            }
+          } else if (
+            res.data[0].search_main_transaction_detailInfo[0].from_address ==
+              res.data[0].search_main_transaction_detailInfo[0].to_address ||
+            res.data[0].search_main_transaction_detailInfo[0].redeem == "1"
+          ) {
+            if (this.nowLang == "cn") {
+              // 从
+              this.transactionlist[0].from_address = "质押";
+            } else {
+              this.transactionlist[0].from_address = "Pledge";
+            }
+            // 至
+            this.transactionlist[0].to_address =
+              res.data[0].search_main_transaction_detailInfo[0].to_address;
+          } else {
+            // 从
+            this.transactionlist[0].from_address =
+              res.data[0].search_main_transaction_detailInfo[0].from_address;
+            // 至
+            this.transactionlist[0].to_address = res.data[0].search_main_transaction_detailInfo[0].to_address.split(
+              ","
+            );
+            // console.log(this.transactionlist[0].to_address);
+            if (this.transactionlist[0].to_address.length > 1) {
+              let to_address = [];
+              //  this.transactionlist[0].to_address.length=5
+              for (let s = 0; s < 6; s++) {
+                to_address.push(
+                  `<span style="color:blue">${s + 1}:</span>` +
+                    this.transactionlist[0].to_address[s]
+                );
+              }
+              this.transactionlist[0].to_address =
+                to_address.toString() + "......";
+              // 交易明细详情
+              this.amount_detail = true;
+              this.transactionlist[0].amount_detail = res.data[0].search_main_transaction_detailInfo[0].amount_detail.split(
+                ","
+              );
+              let amount_detail = [];
+              for (let k = 0; k < 6; k++) {
+                amount_detail.push(
+                  `<span style="color:blue">${k + 1}:</span>` +
+                    this.transactionlist[0].amount_detail[k] / 1000000
+                );
+              }
+              // console.log(to_address.toString());
+              this.transactionlist[0].amount_detail =
+                amount_detail.toString() + "......";
+            } else {
+              this.transactionlist[0].to_address =
+                res.data[0].search_main_transaction_detailInfo[0].to_address;
+              this.amount_detail = false;
+            }
+          }
           // 交易额
           this.transactionlist[0].transaction_amount =
             res.data[0].search_main_transaction_detailInfo[0].transaction_amount;

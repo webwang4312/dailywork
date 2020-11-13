@@ -412,7 +412,7 @@ export default {
         })
         .then((res) => {
           this.loading = false;
-          console.log(res);
+          // console.log(res);
           if (res.data[0].select_id === 1) {
             this.activeName = "first";
             this.line1 = true;

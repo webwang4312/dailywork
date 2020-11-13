@@ -260,6 +260,39 @@ export default {
             res.data[0].block_list[i].time = this.timestampToTime(
               res.data[0].block_list[i].time
             );
+             if (
+              res.data[0].block_list[i].to_address ==
+                "0000000000000000000000000000000000" ||
+              res.data[0].block_list[i].pledge == "1"
+            ) {
+              // 从
+             res.data[0].block_list[i].from_address =
+                res.data[0].block_list[i].from_address.substring(0, 10) + "...";
+              if (this.nowLang == "cn") {
+                res.data[0].block_list[i].to_address = "质押";
+              } else {
+               res.data[0].block_list[i].to_address = "Pledge";
+              }
+            } else if (
+              res.data[0].block_list[i].from_address ==
+                res.data[0].block_list[i].to_address ||
+              res.data[0].block_list[i].redeem == "1"
+            ) {
+              if (this.nowLang == "cn") {
+                // 从
+               res.data[0].block_list[i].from_address = "质押";
+              } else {
+               res.data[0].block_list[i].from_address = "Pledge";
+              }
+              // 至
+             res.data[0].block_list[i].to_address =
+                res.data[0].block_list[i].to_address.substring(0, 10) + "...";
+            } else {
+              res.data[0].block_list[i].from_address =
+                res.data[0].block_list[i].from_address.substring(0, 10) + "...";
+             res.data[0].block_list[i].to_address =
+                res.data[0].block_list[i].to_address.substring(0, 10) + "...";
+            }
             this.blockdetaillist = res.data[0].block_list;
           }
           // console.log(this.blockdetaillist);

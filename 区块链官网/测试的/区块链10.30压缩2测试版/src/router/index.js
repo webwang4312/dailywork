@@ -15,6 +15,9 @@ const routes = [  {
     name: 'index',
     component: () =>
         import("../views/Index.vue"),
+        meta: {
+            keepAlive: true // 需要被缓存
+        }
 
 },
 {
@@ -22,6 +25,9 @@ const routes = [  {
     name: "addressed",
     component: () =>
         import("../views/Address.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 
 },
@@ -30,6 +36,9 @@ const routes = [  {
     name: 'block',
     component: () =>
         import("../views/Block.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 {
@@ -37,6 +46,9 @@ const routes = [  {
     name: 'chart',
     component: () =>
         import("../views/Chart.vue"),
+        meta: {
+            keepAlive: true// 需要被缓存
+        }
 
 },
 {
@@ -44,6 +56,9 @@ const routes = [  {
     name: "transaction",
     component: () =>
         import("../views/Transaction.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 {
@@ -51,6 +66,9 @@ const routes = [  {
     name: "Fastoken",
     component: () =>
         import("../views/Wallet.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 // 区块详情页
@@ -59,6 +77,9 @@ const routes = [  {
     name: "blockdetail",
     component: () =>
         import("../views/blockchildren/blockdetail.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 // 区块详情页2
@@ -67,6 +88,9 @@ const routes = [  {
     name: "blockdetails",
     component: () =>
         import("../views/blockchildren/blockdetails.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 
@@ -76,6 +100,9 @@ const routes = [  {
     name: "transactiondetail",
     component: () =>
         import("../views/transactionchildren/transactiondetail.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 // 地址搜索详情页
@@ -84,6 +111,9 @@ const routes = [  {
     name: "transactiondetails",
     component: () =>
         import("../views/transactionchildren/transactiondetails.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 {
@@ -91,6 +121,9 @@ const routes = [  {
     name: "notfound",
     component: () =>
         import("../views/notfound.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 
@@ -100,6 +133,9 @@ const routes = [  {
     name: "search",
     component: () =>
         import("../components/common/search.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 {
@@ -107,6 +143,9 @@ const routes = [  {
     name: "headertop",
     component: () =>
         import("../components/common/HeaderTop.vue"),
+        meta: {
+            keepAlive: false// 需要被缓存
+        }
 
 },
 
