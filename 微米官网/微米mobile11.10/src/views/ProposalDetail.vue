@@ -185,8 +185,7 @@
               <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
               <!-- </div> -->
             </div>
-
-            <div class="buttonprorej">
+            <div class="buttonprorej" v-if="state == 2">
               <div @click="reject3">
                 <img src="../assets/images/detail/组 1890.png" />
                 <span>反对{{ level3.consCount }}</span>
@@ -195,6 +194,10 @@
                 <img src="../assets/images/detail/组 1890 拷贝.png" />
                 <span>赞成{{ level3.prosCount }}</span>
               </div>
+            </div>
+            <div v-else id="bohuireject">
+              <div>反对{{ level3.consCount }}</div>
+              <div>赞成{{ level3.prosCount }}</div>
             </div>
           </div>
         </div>
@@ -402,7 +405,7 @@
             ></el-progress>
             <div class="agreereject_detail">
               <!-- <div> -->
-                <!-- <img src="@assets/images/detail/矩形 45 拷贝.png" /> 反对{{
+              <!-- <img src="@assets/images/detail/矩形 45 拷贝.png" /> 反对{{
                   finishLevel.consCount
                 }} -->
               <!-- </div> -->
@@ -413,28 +416,38 @@
                 class="duobian"
                 id="duobian1"
               /> -->
-              <div v-if="percentage5 == 0" id="first1percentage5">
-                <img
-                  src="../assets/images/detail/组 1890 拷贝.png"
-                  @click.once="agreeaction"
+              <div v-if="percentage5 == 0">
+                <div
                   v-if="deptId === '003'"
-                />
-                <span v-if="deptId === '003'" @click.once="agreeaction"
-                  >赞成0</span
+                  id="first1percentage5"
+                  class="blue_border"
                 >
-                <span v-else>赞成0</span>
+                  <img
+                    src="../assets/images/detail/组 1890 拷贝.png"
+                    @click.once="agreeaction"
+                  />
+                  <span v-if="deptId === '003'" @click.once="agreeaction"
+                    >赞成0</span
+                  >
+                </div>
+
+                <span v-else id="first1percentage5">赞成0</span>
                 <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
               </div>
-              <div v-if="percentage5 == 33" id="firstpercentage5">
-                <img
-                  src="../assets/images/detail/组 1890 拷贝.png"
-                  @click.once="agreeaction"
+              <div v-if="percentage5 == 33">
+                <div
                   v-if="deptId === '003'"
-                />
-                <span v-if="deptId === '003'" @click.once="agreeaction"
-                  >赞成1</span
+                  id="firstpercentage5"
+                  class="blue_border"
                 >
-                <span v-else>赞成1</span>
+                  <img
+                    src="../assets/images/detail/组 1890 拷贝.png"
+                    @click.once="agreeaction"
+                  />
+                  <span @click.once="agreeaction">赞成1</span>
+                </div>
+
+                <span v-else id="firstpercentage5">赞成1</span>
                 <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
               </div>
               <!-- <img
@@ -443,16 +456,20 @@
                 class="duobian"
                 id="duobian2"
               /> -->
-              <div v-if="percentage5 == 66" id="secondpercentage5">
-                <img
-                  src="../assets/images/detail/组 1890 拷贝.png"
-                  @click.once="agreeaction"
+              <div v-if="percentage5 == 66">
+                <div
                   v-if="deptId === '003'"
-                />
-                <span v-if="deptId === '003'" @click.once="agreeaction"
-                  >赞成2</span
+                  id="secondpercentage5"
+                  class="blue_border"
                 >
-                <span v-else>赞成2</span>
+                  <img
+                    src="../assets/images/detail/组 1890 拷贝.png"
+                    @click.once="agreeaction"
+                  />
+                  <span @click.once="agreeaction">赞成2</span>
+                </div>
+
+                <span v-else id="secondpercentage5">赞成2</span>
                 <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
               </div>
               <!-- <img
@@ -461,15 +478,21 @@
                 class="duobian"
                 id="duobian3"
               /> -->
-              <div v-if="percentage5 == 100" id="thirdpercentage5">
-                <img
-                  src="../assets/images/detail/组 1890 拷贝.png"
-                  @click.once="agreeaction"
+              <div v-if="percentage5 == 100">
+                <div
                   v-if="deptId === '003'"
-                />
-                <span v-if="deptId === '003'" @click.once="agreeaction"
-                  >赞成3</span
+                  id="thirdpercentage5"
+                  class="blue_border"
                 >
+                  <img
+                    src="../assets/images/detail/组 1890 拷贝.png"
+                    @click.once="agreeaction"
+                  />
+                  <span v-if="deptId === '003'" @click.once="agreeaction"
+                    >赞成3</span
+                  >
+                </div>
+
                 <span v-else>赞成3</span>
                 <!-- <img src="@assets/images/detail/矩形 45.png" /> -->
               </div>
@@ -595,13 +618,43 @@ export default {
     //   location.href = location.href + "#reloaded";
     //   location.reload();
     // }
+    // console.log(window);
+    //  window.scrollTo(0, localStorage.getItem("scroll"));
+    // console.log(localStorage.getItem("scroll") + "scroll");
+    // if (localStorage.getItem("scroll") !== "") {
+
+    //     window.scrollTo(0, 2000);
+
+    // } else {
+    //   window.scrollTo(0, -1);
+    // }
+    window.scrollTo(0, -1);
     this.deptId = localStorage.getItem("deptId");
     this.proposalDetail();
     this.countDown();
   },
   computed: {},
-  mounted() {},
+  // mounted() {
+  //   window.addEventListener("scroll", this.handleScroll);
+  // },
+  // destroyed() {
+  //   // 滚动取消
+  //   window.removeEventListener("scroll", this.handleScroll);
+  // },
   methods: {
+    // handle() {
+    //   this.handleScroll();
+    //   this.reload();
+    // },
+    // handleScroll() {
+    //   let scrollTop =
+    //      window.scrollY
+    //     //  ||
+    //     // document.documentElement.scrollTop ||
+    //     // document.body.scrollTop;
+    //   console.log(scrollTop);
+    //   localStorage.setItem("scroll", scrollTop);
+    // },
     timeFormat(param) {
       return param < 10 ? "0" + param : param;
     },
@@ -827,7 +880,7 @@ export default {
           { headers: { token: localStorage.getItem("token") } }
         )
         .then((res) => {
-          // console.log(res);
+          console.log(res);
           if (res.data.code === 200) {
             var result = res.data.result;
             // 等级
@@ -864,7 +917,7 @@ export default {
             // result.finishLevel.prosCount = 3;
             // result.finishLevel.consCount= 2
             if (result.state == 3 || result.state == -4) {
-              console.log(result.finishLevel.prosCount);
+              // console.log(result.finishLevel.prosCount);
               // 人物权限1/0
               // result.isAllActioned = 1;
               // result.implPlan = "";
@@ -951,7 +1004,7 @@ export default {
                     if (result.finishLevel.prosCount === 3) {
                       this.percentage5 = Number(100);
                     }
-// console.log(this.percentage5);
+                    // console.log(this.percentage5);
                     // let fenzileft = Number(result.finishLevel.consCount * 100);
                     // let fenziright =
                     //   result.finishLevel.prosCount +
@@ -1186,7 +1239,13 @@ export default {
               );
             }
           } else {
-            this.$message.error(res.data.result);
+             this.$message({
+          message: res.data.result,
+          center: true,
+          type: "error",
+          duration: 1000,
+        });
+            // this.$message.error(res.data.result);
             localStorage.clear();
             this.$store.state.username = false;
             this.$router.push({
@@ -1218,6 +1277,7 @@ export default {
           )
           .then((res) => {
             // console.log(res);
+            // this.handleScroll();
             if (res.data.code === 200) {
               this.tellprogress = "";
               this.qita = true;
@@ -1265,30 +1325,35 @@ export default {
     },
     // 全部完成
     allComplete() {
-      this.$http
-        .post(
-          // 测试上
-          //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}` + "/weimioffice/vote/sendAllActionLogs",
-          qs.stringify({
-            userId: localStorage.getItem("userId"),
-            activityId: this.$route.query.activityId,
-          }),
-          { headers: { token: localStorage.getItem("token") } }
-        )
-        .then((res) => {
-          // console.log(res);
-          if (res.data.code === 200) {
-            this.actionstate = false;
-            this.progress = true;
-            this.shunxu = false;
-            this.qita = true;
-            this.$message.success(res.data.result);
-            this.reload();
-          } else {
-            this.$message.error(res.data.result);
-          }
-        });
+      // console.log(this.logs.length);
+      if (this.logs.length == 0) {
+        this.$message.error("请先提交行动日志");
+      } else {
+        this.$http
+          .post(
+            // 测试上
+            //47.105.215.191/weimi/index/getPhoneCode
+            `${BASEURL}` + "/weimioffice/vote/sendAllActionLogs",
+            qs.stringify({
+              userId: localStorage.getItem("userId"),
+              activityId: this.$route.query.activityId,
+            }),
+            { headers: { token: localStorage.getItem("token") } }
+          )
+          .then((res) => {
+            // console.log(res);
+            if (res.data.code === 200) {
+              this.actionstate = false;
+              this.progress = true;
+              this.shunxu = false;
+              this.qita = true;
+              this.$message.success(res.data.result);
+              this.reload();
+            } else {
+              this.$message.error(res.data.result);
+            }
+          });
+      }
     },
     timestampToTime2(timestamp) {
       var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -1354,6 +1419,32 @@ export default {
 };
 </script>
 <style lang="less">
+.blue_border {
+  border: 1px solid #009fcd;
+}
+#bohuireject {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-size: 12px;
+  font-family: "苹方-简";
+  font-weight: normal;
+  line-height: 17px;
+  div:nth-child(1) {
+    color: #d93e3e;
+  }
+  div:nth-child(2) {
+    color: #009fcd;
+  }
+
+  img {
+    width: 14.03px;
+    height: 13.03px;
+  }
+}
 #vote_plan {
   font-size: 16px;
   font-family: "苹方-简";
@@ -1408,6 +1499,10 @@ export default {
   width: 100%;
   margin: 0 auto;
   margin-left: 15px;
+  textarea {
+    border: none;
+    outline: none;
+  }
   .submit {
     margin-top: 15px;
   }
@@ -1496,24 +1591,25 @@ export default {
 }
 #duobian3 {
 }
-#first1percentage5{
-   display: flex;
+#first1percentage5 {
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  
+  // border: 1px solid #009fcd;
   width: 80px;
   height: 30px;
-  border: 1px solid #009fcd;
+  // border: 1px solid #009fcd;
   opacity: 1;
   border-radius: 15px;
+  color: #009fcd;
   img {
     width: 14.03px;
     height: 13.03px;
   }
-  span{
-    color:#009fcd ;
+  span {
+    color: #009fcd;
   }
 }
 #firstpercentage5 {
@@ -1525,15 +1621,16 @@ export default {
   left: 66px;
   width: 80px;
   height: 30px;
-  border: 1px solid #009fcd;
+
   opacity: 1;
   border-radius: 15px;
+  color: #009fcd;
   img {
     width: 14.03px;
     height: 13.03px;
   }
-   span{
-    color:#009fcd ;
+  span {
+    color: #009fcd;
   }
 }
 #secondpercentage5 {
@@ -1545,15 +1642,15 @@ export default {
   left: 160px;
   width: 80px;
   height: 30px;
-  border: 1px solid #009fcd;
+  color: #009fcd;
   opacity: 1;
   border-radius: 15px;
   img {
     width: 14.03px;
     height: 13.03px;
   }
-   span{
-    color:#009fcd ;
+  span {
+    color: #009fcd;
   }
 }
 #thirdpercentage5 {
@@ -1583,6 +1680,8 @@ export default {
     width: 90%;
     margin: 0 auto;
     margin-top: 10px;
+    word-wrap: break-word;
+    word-break: normal;
   }
 }
 .actionlist1 {
@@ -1621,7 +1720,7 @@ export default {
   button:nth-child(2) {
     width: 144px;
     height: 45px;
-    background: #666666;
+    background: #009fcd;
     border-radius: 10px;
     font-size: 14px;
     font-family: PingFang SC;
@@ -1713,6 +1812,8 @@ export default {
   height: 330px;
   textarea {
     margin-left: 15px !important;
+    border: none;
+    outline: none;
   }
 }
 #display {
@@ -1828,6 +1929,8 @@ export default {
         line-height: 31px;
         text-align: center;
         padding-top: 10px;
+        word-wrap: break-word;
+        word-break: normal;
       }
       .vote_name {
         width: 100%;
@@ -1839,6 +1942,8 @@ export default {
         line-height: 31px;
         opacity: 0.5;
         padding-top: 5px;
+        word-wrap: break-word;
+        word-break: normal;
       }
       ul {
         li {
@@ -1902,7 +2007,8 @@ export default {
           color: white;
           padding-left: 10px;
           margin-top: 15px;
-
+          border: none;
+          outline: none;
           line-height: 20px;
         }
         .finish {
@@ -1994,7 +2100,7 @@ export default {
           }
           div:nth-child(1) {
             height: 30px;
-            border: 1px solid #d93e3e;
+            // border: 1px solid #d93e3e;
             opacity: 1;
             border-radius: 15px;
             font-size: 12px;
@@ -2008,7 +2114,7 @@ export default {
           div:nth-child(2) {
             height: 30px;
             line-height: 30px;
-            border: 1px solid #009fcd;
+            // border: 1px solid #009fcd;
             opacity: 1;
             border-radius: 15px;
             font-size: 12px;

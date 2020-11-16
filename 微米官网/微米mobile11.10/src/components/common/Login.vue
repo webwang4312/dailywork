@@ -519,7 +519,7 @@ export default {
             })
           )
           .then((res) => {
-            // console.log(res);
+             console.log(res);
             if (res.data.code == 200) {
               localStorage.setItem("loginState", new Date());
               if (this.$i18n.locale == "cn") {

@@ -53,6 +53,9 @@ export default new Vuex.Store({
         login(state) {
             state.login = !state.login
         },
+        loginfalse(state) {
+            return state.login =true
+        },
         sliderShow(state) {
             // console.log(state.slidershow);
             state.slidershow = !state.slidershow

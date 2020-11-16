@@ -46,9 +46,9 @@ Vue.prototype.$deleteRequest = deleteRequest;
 import preventClick from '@assets/clickStatefrom'  // 根据自己的路径
 Vue.use(preventClick);
 // 页面跳转到顶部
-router.afterEach((to, from, next) => {
-  window.scrollTo(0, 0);
-})
+// router.afterEach((to, from, next) => {
+//   window.scrollTo(0, 0);
+// })
 new Vue({
   router,
   store,

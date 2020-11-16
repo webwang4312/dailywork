@@ -20,7 +20,7 @@
         <div class="title">
           <label :class="{ movename: showtitle }"> 标题</label>
           <input
-            type="password"
+            type="text"
             v-model="title"
             @focus="titleFocus"
             @blur="titleBlur"
@@ -148,6 +148,7 @@ export default {
     // 摘要
     summaryFocus() {
       this.showsummary = true;
+      window.scrollTo(0,50)
     },
     summaryBlur() {
       if (this.summary == "") {

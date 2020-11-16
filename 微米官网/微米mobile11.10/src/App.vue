@@ -18,6 +18,12 @@ export default {
     return {  isRouterAlive: true,};
   },
   created() {
+    // console.log(this.$store.state.username.length);
+    if(this.$store.state.username==null||this.$store.state.username=='false'||this.$store.state.username.length===undefined){
+      // console.log('1');
+      //   this.$store.commit("loginfalse");
+      //   console.log(this.$store.state.login);
+    }
        //在页面加载时读取sessionStorage里的状态信息
     if (localStorage.getItem("store")) {
       this.$store.replaceState(

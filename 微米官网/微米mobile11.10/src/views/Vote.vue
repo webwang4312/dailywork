@@ -353,6 +353,7 @@ export default {
   },
   components: { slider, vfooter },
   created() {
+      window.scrollTo(0, -1);
     this.voteallnumber = 1;
     this.voteinnumber = 1;
     this.voteendnumber = 1;
@@ -444,32 +445,38 @@ export default {
       this.votealllistnumber = val;
 
       this.searchAll();
+       window.scrollTo(0, -1);
     },
     allChange(val) {
       // console.log(val);
       this.voteallnumber = val;
 
       this.getVoteAll();
+       window.scrollTo(0, -1);
     },
     inChange(val) {
       this.voteinnumber = val;
 
       this.inVoteAll();
+       window.scrollTo(0, -1);
     },
     endChange(val) {
       this.voteendnumber = val;
 
       this.endVoteAll();
+       window.scrollTo(0, -1);
     },
     agreeChange(val) {
       this.voteagreenumber = val;
 
       this.agreeVoteAll();
+       window.scrollTo(0, -1);
     },
     rejectChange(val) {
       this.voterejectnumber = val;
 
       this.rejectVoteAll();
+       window.scrollTo(0, -1);
     },
     // 投票获取
     async getVoteAll() {
@@ -827,6 +834,9 @@ export default {
 };
 </script>
 <style lang="less">
+.van-tabs__wrap{
+z-index:0
+}
 .placeholder_map {
   width: 100%;
   margin: 0 auto;
@@ -893,6 +903,8 @@ export default {
   .proposal_content {
     height: auto;
     .content_header {
+      display: flex;
+      flex-direction: row;
       margin-top: 10px;
       align-items: center;
       img {
@@ -902,7 +914,7 @@ export default {
       img:nth-of-type(1) {
         position: relative;
         left: 30px;
-        top: 3px;
+        top: 1px;
       }
 
       input {

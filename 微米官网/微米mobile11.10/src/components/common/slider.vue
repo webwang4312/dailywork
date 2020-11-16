@@ -161,6 +161,9 @@ export default {
     };
   },
   created() {
+    if(this.$store.state.username==false||this.$store.state.username==''){
+         this.$store.commit("loginfalse");
+    }
     this.$store.commit("showSliderFalse");
     if (this.$i18n.locale == "cn") {
       this.nav = cn.nav;

@@ -10,6 +10,7 @@
             placeholder="请输入名字或编号"
             v-model="searchnumber"
             @keyup="enter"
+            @focus="jianpanfocus"
           />
         </div>
         <div>
@@ -514,6 +515,7 @@ import slider from "@components/common/slider";
 import vfooter from "@components/common/vFooter";
 export default {
   name: "partner",
+  inject: ["reload"],
   data() {
     return {
       searchnumber: "",
@@ -554,6 +556,7 @@ export default {
   },
   components: { slider, vfooter },
   created() {
+    window.scrollTo(0, -1);
     this.votealllistnumber = 1;
     this.voteallnumber = 1;
     this.voteinnumber = 1;
@@ -572,9 +575,23 @@ export default {
 
   mounted() {},
   methods: {
+    jianpanfocus() {
+      var clientHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      var nowClientHeight =
+        document.documentElement.clientHeight || document.body.clientHeight;
+      // alert(clientHeight);
+      // alert(nowClientHeight);
+    },
     toProposal() {
       if (!localStorage.getItem("token")) {
-        this.$message.error("请先登录您的账号信息");
+        this.$message({
+          message: "请先登录您的账号信息",
+          center: true,
+          type: "error",
+          duration: 1000,
+        });
+
         // setTimeout(() => {
         //   this.$router.push({ path: "/proposal" });
         // }, 3000);
@@ -582,7 +599,12 @@ export default {
         localStorage.getItem("walletAddress") === "" ||
         localStorage.getItem("walletAddress") === null
       ) {
-        this.$message.error("请先绑定您的钱包账户");
+        this.$message({
+          message: "请先绑定您的钱包账户",
+          center: true,
+          type: "error",
+          duration: 1000,
+        });
       } else {
         this.$router.push({
           path: "/toproposal",
@@ -592,48 +614,63 @@ export default {
     // 跳转提案详情页
     goToproposalDetail(index, state) {
       // console.log(index, state);
-      // if (!localStorage.getItem("token")) {
-      //   this.$message.error("请先去登录或注册");
-      // } else {
-      //   // console.log(index, state);
-      this.$router.push({
-        path: "/proposaldetail",
-        query: { activityId: index, state: state },
-      });
+      if (!localStorage.getItem("token")) {
+        this.$message({
+          message: "请先去登录或注册",
+          center: true,
+          type: "error",
+          duration: 1000,
+        });
+      } else {
+        //   // console.log(index, state);
+        this.$router.push({
+          path: "/proposaldetail",
+          query: { activityId: index, state: state },
+        });
+      }
     },
     alllistChange() {
       this.votealllistnumber = val;
 
       this.searchAll();
+
+      window.scrollTo(0, -1);
     },
     allChange(val) {
       // console.log(val);
       this.voteallnumber = val;
       this.getVoteAll();
+      window.scrollTo(0, -1);
     },
     inChange(val) {
       this.voteinnumber = val;
       this.inVoteAll();
+      window.scrollTo(0, -1);
     },
     endChange(val) {
       this.voteendnumber = val;
       this.endVoteAll();
+      window.scrollTo(0, -1);
     },
     agreeChange(val) {
       this.voteagreenumber = val;
       this.agreeVoteAll();
+      window.scrollTo(0, -1);
     },
     rejectChange(val) {
       this.voterejectnumber = val;
       this.rejectVoteAll();
+      window.scrollTo(0, -1);
     },
     jieanChange(val) {
       this.votejieannumber = val;
       this.jieanVoteAll();
+      window.scrollTo(0, -1);
     },
     bohuiChange(val) {
       this.votebohuinumber = val;
       this.bohuiVoteAll();
+      window.scrollTo(0, -1);
     },
     timestampToTime2(timestamp) {
       var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -1083,6 +1120,9 @@ export default {
 };
 </script>
 <style lang="less">
+.van-tabs__wrap {
+  z-index: 0;
+}
 .placeholder_map {
   width: 100%;
   margin: 0 auto;
@@ -1124,7 +1164,7 @@ export default {
     background: #0c0c0c;
   }
   .van-tabs {
-    margin-top: 18px;
+    margin-top: 10px;
     margin-bottom: 100px;
   }
   .van-tab {
@@ -1154,7 +1194,7 @@ export default {
       align-items: center;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       img {
         width: 16px;
         height: 16px;
@@ -1165,8 +1205,9 @@ export default {
         top: 3px;
       }
       div:nth-child(2) {
-        position: relative;
-        right: 15px;
+        //  margin-right: 15px;
+        // position: relative;
+        // right: 15px;
         img {
           position: relative;
           left: -5px;
@@ -1195,7 +1236,7 @@ export default {
       }
     }
     #all_list {
-      padding-top: 30px;
+      padding-top: 0px;
       img {
         width: 16px;
         height: 16px;
@@ -1244,7 +1285,7 @@ export default {
         }
         div:nth-of-type(2) {
           position: relative;
-          right: 148px;
+          right: 78px;
         }
         div {
           display: flex;

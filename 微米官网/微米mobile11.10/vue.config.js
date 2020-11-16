@@ -7,7 +7,7 @@ const AddAssetHtmlPlugin = require("add-asset-html-webpack-plugin");
 let { version, version_lib, openGzip, library } = require("./package.json");
 module.exports = {
   publicPath: "./", // 基本路径
-  outputDir: "dist", // 输出文件目录
+  outputDir: "mobiledist", // 输出文件目录
   assetsDir: "static",
   lintOnSave: false, // eslint-loader 是否在保存的时候检查
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md

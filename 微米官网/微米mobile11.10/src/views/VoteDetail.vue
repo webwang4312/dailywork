@@ -118,6 +118,7 @@ export default {
   },
   components: { votenumber, slider, vFooter },
   created() {
+     window.scrollTo(0, -1);
     //  console.log(this.$route.query.state);
     this.voteDetail();
     this.countDown();
@@ -417,6 +418,8 @@ export default {
         opacity: 1;
         text-align: center;
         padding-top: 10px;
+        word-wrap: break-word;
+        word-break: normal;
       }
       .vote_name {
         width: 100%;
@@ -429,6 +432,8 @@ export default {
         color: #ffffff;
         opacity: 0.5;
         padding-top: 5px;
+        word-wrap: break-word;
+        word-break: normal;
       }
       ul {
         li {
@@ -460,6 +465,8 @@ export default {
             color: #ffffff;
             opacity: 0.5;
             padding-top: 5px;
+            word-wrap: break-word;
+            word-break: normal;
           }
         }
       }
@@ -505,7 +512,7 @@ export default {
             // width: 78px;
             height: 30px;
             line-height: 30px;
-            border: 1px solid #d93e3e;
+            // border: 1px solid #d93e3e;
             opacity: 1;
             border-radius: 15px;
             font-size: 12px;
@@ -520,7 +527,7 @@ export default {
           div:nth-child(2) {
             // width: 78px;
             height: 30px;
-            border: 1px solid #009fcd;
+            // border: 1px solid #009fcd;
             opacity: 1;
             border-radius: 15px;
             line-height: 30px;
