@@ -206,6 +206,7 @@
 
 <script>
 // import { country } from "../assets/rule.js";
+import {BASEURL} from '@api/api';
 import qs from "qs";
 import crypto from "crypto";
 import { log } from "util";
@@ -586,7 +587,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/login/getPhoneCode",
+         `${BASEURL}`+"/weimioffice/login/getPhoneCode",
           qs.stringify({
             phone: that.tel,
             type: 0,
@@ -770,7 +771,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/login/userRegister",
+            `${BASEURL}`+"/weimioffice/login/userRegister",
             qs.stringify({
               username: this.username,
               password: this.password,
@@ -819,7 +820,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/login/getBindInfo",
+           `${BASEURL}`+"/weimioffice/login/getBindInfo",
             qs.stringify({
               userId: localStorage.getItem("userId"),
             }),
@@ -854,7 +855,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/login/userLogin",
+            `${BASEURL}`+"/weimioffice/login/userLogin",
             qs.stringify({
               username: this.username1,
               password: this.password1,

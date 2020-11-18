@@ -10,7 +10,7 @@
 </template>
 
 <style lang="less">
-//@import "./assets/css/media.less";
+// @import "./assets/common/element-ui-2.4.11theme-chalkindex.css";
 a {
   text-decoration: none;
 }

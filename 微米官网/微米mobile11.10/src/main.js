@@ -45,10 +45,23 @@ Vue.prototype.$deleteRequest = deleteRequest;
 // 防止重复点击
 import preventClick from '@assets/clickStatefrom'  // 根据自己的路径
 Vue.use(preventClick);
+router.beforeEach((to, from, next) => {    
+  // chrome
+  document.body.scrollTop = 0
+  // firefox
+  document.documentElement.scrollTop = 0
+  // safari
+  window.pageYOffset = 0
+  next()
+})
 // 页面跳转到顶部
-// router.afterEach((to, from, next) => {
-//   window.scrollTo(0, 0);
-// })
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0);
+})
+ //在页面刷新时将vuex里的信息保存到sessionStorage里
+ window.addEventListener("beforeunload", () => {
+  localStorage.setItem("store", JSON.stringify(this.$store.state));
+});
 new Vue({
   router,
   store,

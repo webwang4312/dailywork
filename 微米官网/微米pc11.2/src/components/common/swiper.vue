@@ -36,7 +36,9 @@ export default {
   }
   else{
      this.abouttrue =false;
-  }},
+  }
+  // this.reload()
+  },
 
   mounted() {},
 

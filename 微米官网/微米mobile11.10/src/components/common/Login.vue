@@ -150,7 +150,7 @@
   </div>
 </template>
 <script>
-import {BASEURL} from '@api/api';
+import { BASEURL } from "@api/api";
 import qs from "qs";
 import crypto from "crypto";
 import slider from "@components/common/slider";
@@ -187,6 +187,7 @@ export default {
   },
   components: { slider },
   created() {
+   
     this.$store.commit("showSliderFalse");
   },
   mounted() {
@@ -341,7 +342,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/login/getPhoneCode",
+          `${BASEURL}` + "/weimioffice/login/getPhoneCode",
           qs.stringify({
             phone: that.tel,
             type: 0,
@@ -481,7 +482,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            `${BASEURL}`+"/weimioffice/login/getBindInfo",
+            `${BASEURL}` + "/weimioffice/login/getBindInfo",
             qs.stringify({
               userId: localStorage.getItem("userId"),
             }),
@@ -512,24 +513,32 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            `${BASEURL}`+"/weimioffice/login/userLogin",
+            `${BASEURL}` + "/weimioffice/login/userLogin",
             qs.stringify({
               username: this.username1,
               password: this.password1,
             })
           )
           .then((res) => {
-             console.log(res);
+            console.log(res);
             if (res.data.code == 200) {
               localStorage.setItem("loginState", new Date());
+              localStorage.setItem('login',true)
               if (this.$i18n.locale == "cn") {
-                //  this.$message.success("登陆成功");
-                this.$message({
+                this.$toast.success({
+                  duration: 1000, // 持续展示 toast
+                  forbidClick: true, // 禁用背景点击
+                  loadingType: "spinner",
                   message: "登陆成功",
-                  center: true,
-                  type: "success",
-                  duration: 1000,
+                  position: top,
                 });
+                //  this.$message.success("登陆成功");
+                // this.$message({
+                //   message: "登陆成功",
+                //   center: true,
+                //   type: "success",
+                //   duration: 1000,
+                // });
                 // this.$notify({
                 //   message: "登录成功",
                 //   color: "#ad0000",
@@ -539,18 +548,26 @@ export default {
               }
               if (this.$i18n.locale == "en") {
                 // this.$message.success("login successful");
-                this.$message({
+                this.$toast.success({
+                  duration: 1000, // 持续展示 toast
+                  forbidClick: true, // 禁用背景点击
+                  loadingType: "spinner",
                   message: "login successful",
-                  center: true,
-                  type: "success",
-                  duration: 1000,
+                  position: top,
                 });
+                // this.$message({
+                //   message: "login successful",
+                //   center: true,
+                //   type: "success",
+                //   duration: 1000,
+                // });
               }
               // this.$store.dispatch("leavelogin");
               this.$store.commit("login");
               // this.username1 = "";
               // this.password1 = "";
-              this.$store.state.username = res.data.result.username;
+              localStorage.setItem("username", res.data.result.username);
+              // this.$store.state.username = res.data.result.username;
               // console.log(this.$store.state.username)
               // const store = {
               //   username: res.data.result.username,
@@ -608,7 +625,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            `${BASEURL}`+"/weimioffice/login/userRegister",
+            `${BASEURL}` + "/weimioffice/login/userRegister",
             qs.stringify({
               username: this.username,
               password: this.password,
@@ -686,7 +703,7 @@ export default {
   }
   to {
     position: relative;
-    top: -7px;
+    top: 1px;
     font-size: 12px;
     font-family: "苹方-简";
     font-weight: normal;

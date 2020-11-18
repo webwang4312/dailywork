@@ -17,7 +17,7 @@
         </p>
         <div id="videoz">
           <video
-           v-if="!$store.state.slidershow"
+            v-if="!$store.state.slidershow"
             id="videol"
             width="315"
             height="195"
@@ -28,14 +28,13 @@
             x5-video-player-type="h5"
             x5-video-orientation="portraint"
             poster="../assets/images/index/video1.png"
-          
           >
             <source :src="videosource[0].src" type="video/mp4" />
           </video>
           <img
             src="../assets/images/index/video1.png"
             alt=""
-           v-if="$store.state.slidershow"
+            v-if="$store.state.slidershow"
             style="width:315px;height:195px"
           />
         </div>
@@ -47,14 +46,14 @@
         <div class="projectline"></div>
         <ul class="project-content">
           <div>
-            <li >
+            <li>
               <img src="@assets/images/index/height.png" alt />
               <br />
               <p>{{ columndata[0] }}</p>
               <br />
               <p>{{ $t("height[0]") }}</p>
             </li>
-            <li >
+            <li>
               <img src="@assets/images/index/number.png" alt />
               <br />
               <p>{{ columndata[1] }}</p>
@@ -336,7 +335,9 @@ export default {
     };
   },
   components: { slider, vFooter },
+ 
   created() {
+   window.scrollTo(0, 0);
     this.nowLang = this.$i18n.locale;
     // console.log(this.nowLang);
     // this.getSession();
@@ -358,6 +359,11 @@ export default {
   },
   computed: {},
   mounted() {
+    this.$nextTick(function () {
+ window.scrollTo(0, 0);
+    // 代码保证 this.$el 在 document 中
+
+  })
     // 请求首页数据
     // this.getIndex();
     this.getHomeData();
@@ -372,7 +378,6 @@ export default {
     },
 
     playvideo1() {
-     
       var myVideo1 = document.getElementById("videol");
       if (myVideo1.paused) {
         myVideo1.play();
@@ -751,9 +756,9 @@ export default {
       // flex-wrap: wrap;
       position: absolute;
       top: 92px;
-    .padleft{
-      margin-left: 10px!important;
-    }
+      .padleft {
+        margin-left: 10px !important;
+      }
       li {
         width: 168px;
         height: 101px;
@@ -762,7 +767,7 @@ export default {
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         opacity: 1;
         border-radius: 5px;
-       
+
         margin-top: 10px;
         img {
           width: 35px;

@@ -353,7 +353,7 @@ export default {
   },
   components: { slider, vfooter },
   created() {
-      window.scrollTo(0, -1);
+     window.scrollTo(0, 0);
     this.voteallnumber = 1;
     this.voteinnumber = 1;
     this.voteendnumber = 1;
@@ -400,9 +400,9 @@ export default {
           this.alllisttotal = res.data.result.total;
           // console.log(this.alltotal);
           for (let i = 0; i < res.data.result.list.length; i++) {
-            if (this.votealllist[i].title.length > 7) {
+            if (this.votealllist[i].title.length > 10) {
               this.votealllist[i].title =
-                res.data.result.list[i].title.substring(0, 7) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votealllist[i].title = res.data.result.list[i].title;
             }
@@ -500,9 +500,9 @@ export default {
 
           // console.log(this.alltotal);
           for (let i = 0; i < res.data.result.list.length; i++) {
-            if (this.voteall[i].title.length > 7) {
+            if (this.voteall[i].title.length > 10) {
               this.voteall[i].title =
-                res.data.result.list[i].title.substring(0, 7) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.voteall[i].title = res.data.result.list[i].title;
             }
@@ -566,9 +566,9 @@ export default {
               res.data.result.list[i].endTime
             );
 
-            if (this.votein[i].title.length > 7) {
+            if (this.votein[i].title.length > 10) {
               this.votein[i].title =
-                res.data.result.list[i].title.substring(0, 7) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votein[i].title = res.data.result.list[i].title;
             }
@@ -624,9 +624,9 @@ export default {
           this.endtotal = res.data.result.total;
 
           for (let i = 0; i < res.data.result.list.length; i++) {
-            if (this.voteend[i].title.length > 7) {
+            if (this.voteend[i].title.length > 10) {
               this.voteend[i].title =
-                res.data.result.list[i].title.substring(0, 7) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.voteend[i].title = res.data.result.list[i].title;
             }
@@ -683,9 +683,9 @@ export default {
           // 页数
           this.agreetotal = res.data.result.total;
           for (let i = 0; i < res.data.result.list.length; i++) {
-            if (this.voteagree[i].title.length > 7) {
+            if (this.voteagree[i].title.length >10) {
               this.voteagree[i].title =
-                res.data.result.list[i].title.substring(0, 7) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.voteagree[i].title = res.data.result.list[i].title;
             }
@@ -742,9 +742,9 @@ export default {
           // 页数
           this.rejecttotal = Math.ceil(res.data.result.total / 8);
           for (let i = 0; i < res.data.result.list.length; i++) {
-            if (this.votereject[i].title.length > 7) {
+            if (this.votereject[i].title.length > 10) {
               this.votereject[i].title =
-                res.data.result.list[i].title.substring(0, 7) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votereject[i].title = res.data.result.list[i].title;
             }

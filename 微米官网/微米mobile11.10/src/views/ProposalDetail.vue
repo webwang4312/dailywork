@@ -12,8 +12,9 @@
               <div></div>
               <div>投票倒计时</div>
             </div>
+
             <div class="vote_content_footer" v-if="toupiaoend">
-              {{ countDownList }}
+              <van-count-down :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
             </div>
             <div class="vote_content_footer" v-else>投票时间已结束</div>
           </li>
@@ -610,6 +611,8 @@ export default {
       displays: false,
       progress: false,
       qita: false,
+      nowTime: "",
+      time: "",
     };
   },
   components: { votenumber, slider, vFooter },
@@ -628,12 +631,18 @@ export default {
     // } else {
     //   window.scrollTo(0, -1);
     // }
-    window.scrollTo(0, -1);
+    window.scrollTo(0, 0);
     this.deptId = localStorage.getItem("deptId");
     this.proposalDetail();
     this.countDown();
   },
   computed: {},
+  mounted() {
+    this.$nextTick(function() {
+      window.scrollTo(0, 0);
+      // 代码保证 this.$el 在 document 中
+    });
+  },
   // mounted() {
   //   window.addEventListener("scroll", this.handleScroll);
   // },
@@ -661,24 +670,28 @@ export default {
     countDown(it) {
       var interval = setInterval(() => {
         // 获取当前时间，同时得到活动结束时间数组
-        let newTime = new Date().getTime(); // 对结束时间进行处理渲染到页面
+        let newTime = new Date(this.nowTime).getTime(); // 对结束时间进行处理渲染到页面
         // console.log(newTime);
         let endTime = new Date(this.endTime).getTime();
         // console.log(endTime);
+        // this.time=(endTime-newTime)
         let obj = null; // 如果活动未结束，对时间进行处理
         if (endTime - newTime > 0) {
           this.toupiaoend = true;
+          let time2 = endTime - newTime;
           let time = (endTime - newTime) / 1000; // 获取天、时、分、秒
           let day = parseInt(time / (60 * 60 * 24));
           let hou = parseInt((time % (60 * 60 * 24)) / 3600);
           let min = parseInt(((time % (60 * 60 * 24)) % 3600) / 60);
           let sec = parseInt(((time % (60 * 60 * 24)) % 3600) % 60);
+
           obj = {
             day: this.timeFormat(day),
             hou: this.timeFormat(hou),
             min: this.timeFormat(min),
             sec: this.timeFormat(sec),
           };
+          this.time = time2;
         } else {
           this.toupiaoend = false;
           // 活动已结束，全部设置为'00'
@@ -880,7 +893,7 @@ export default {
           { headers: { token: localStorage.getItem("token") } }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.data.code === 200) {
             var result = res.data.result;
             // 等级
@@ -904,6 +917,7 @@ export default {
             this.title = result.title;
             this.logs = result.logs;
             this.endTime = result.endTime;
+            this.nowTime = result.nowTime;
             // 状态002.003.004
             this.state = result.state;
 
@@ -1239,15 +1253,23 @@ export default {
               );
             }
           } else {
-             this.$message({
-          message: res.data.result,
-          center: true,
-          type: "error",
-          duration: 1000,
-        });
+            this.$toast.fail({
+              duration: 1000, // 持续展示 toast
+              forbidClick: true, // 禁用背景点击
+              loadingType: "spinner",
+              message: res.data.result,
+              position: top,
+            });
+            // this.$message({
+            //   message: res.data.result,
+            //   center: true,
+            //   type: "error",
+            //   duration: 1000,
+            // });
             // this.$message.error(res.data.result);
             localStorage.clear();
-            this.$store.state.username = false;
+            // this.$store.state.username = '';
+            this.$store.commit("loginfalse");
             this.$router.push({
               path: "/proposal",
             });
@@ -1281,10 +1303,24 @@ export default {
             if (res.data.code === 200) {
               this.tellprogress = "";
               this.qita = true;
-              this.$message.success(res.data.result);
+              this.$message({
+                type: "success",
+                message: res.data.result,
+                center: true,
+                offset: 40,
+                duration:2000
+              });
+              // this.$message.success(res.data.result);
               this.reload();
             } else {
-              this.$message.error(res.data.result);
+              this.$message({
+                type: "error",
+                message: res.data.result,
+                center: true,
+                offset: 40,
+                 duration:2000
+              });
+              // this.$message.error(res.data.result);
             }
           });
       }
@@ -1419,6 +1455,13 @@ export default {
 };
 </script>
 <style lang="less">
+.van-count-down {
+  font-size: 14px;
+  font-family: "苹方-简";
+  font-weight: normal;
+  line-height: 21px;
+  color: #ffffff;
+}
 .blue_border {
   border: 1px solid #009fcd;
 }

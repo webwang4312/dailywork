@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.d847df8ea7ed66db21f7fe47647686ec.js"
+  "precache-manifest.273150c0888360e48ef1e14a5ebd1840.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "textone"});

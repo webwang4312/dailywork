@@ -212,6 +212,7 @@
 </template>
 
 <script>
+import {BASEURL} from '@api/api';
 var qs = require("qs");
 import Login from "@components/common/Login";
 import Forget from "@components/common/ForgetPassword";
@@ -309,7 +310,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/optionDetail",
+          `${BASEURL}`+"/weimioffice/vote/optionDetail",
           qs.stringify({
             activityId: this.$route.query.activityId,
           })

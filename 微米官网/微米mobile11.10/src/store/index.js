@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         // 登录注册
-        login: true,
+        login: localStorage.getItem('login'),
         slidershow: false,
         ysmenceng: false,
         username: '',

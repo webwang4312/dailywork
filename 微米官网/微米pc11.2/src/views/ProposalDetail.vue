@@ -603,6 +603,7 @@
 </template>
 
 <script>
+import {BASEURL} from '@api/api';
 var qs = require("qs");
 import Login from "@components/common/Login";
 import votenumber from "../components/common/voteNumber";
@@ -748,7 +749,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/updateMotion",
+          `${BASEURL}`+"/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -777,7 +778,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/updateMotion",
+          `${BASEURL}`+"/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -807,7 +808,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/updateMotion",
+          `${BASEURL}`+"/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -834,7 +835,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/updateMotion",
+          `${BASEURL}`+"/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -871,7 +872,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/updateMotion",
+          `${BASEURL}`+"/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -895,7 +896,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/updateMotion",
+          `${BASEURL}`+"/weimioffice/vote/updateMotion",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,
@@ -920,7 +921,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/motionDetail ",
+          `${BASEURL}`+"/weimioffice/vote/motionDetail ",
           qs.stringify({
             activityId: this.$route.query.activityId,
             userId: localStorage.getItem("userId"),
@@ -1308,7 +1309,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/vote/addLogs",
+            `${BASEURL}`+"/weimioffice/vote/addLogs",
             qs.stringify({
               userId: localStorage.getItem("userId"),
               activityId: this.$route.query.activityId,
@@ -1338,7 +1339,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/vote/commitImplPlan",
+            `${BASEURL}`+"/weimioffice/vote/commitImplPlan",
             qs.stringify({
               userId: localStorage.getItem("userId"),
               activityId: this.$route.query.activityId,
@@ -1369,7 +1370,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/sendAllActionLogs",
+          `${BASEURL}`+"/weimioffice/vote/sendAllActionLogs",
           qs.stringify({
             userId: localStorage.getItem("userId"),
             activityId: this.$route.query.activityId,

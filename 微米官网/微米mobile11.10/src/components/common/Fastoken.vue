@@ -201,26 +201,36 @@ export default {
             { headers: { token: localStorage.getItem("token") } }
           )
           .then((res) => {
-            // console.log(res);
+            //  alert(res);
             if (res.data.code == 200) {
+               localStorage.setItem(
+                "walletAddress",
+                 res.data.result
+              );
+              
+               this.$router.push({
+                path: "/index",
+              });
               if (this.$i18n.locale == "cn") {
-                this.$message.success(res.data.result);
+                this.$message.success('绑定成功');
                 this.$store.dispatch("fastokenHide");
+                //  this.$message.error('请重新登录');
                 // this.tel = "";
                 // this.password = "";
                 // this.confirmpassword = "";
                 // this.yanzheng = "";
               }
               if (this.$i18n.locale == "en") {
-                this.$message.success(res.data.result);
+                this.$message.success('Bind Success');
                 this.$store.dispatch("fastokenHide");
+                //  this.$message.error('请重新登录');
                 // this.tel = "";
                 // this.password = "";
                 // this.confirmpassword = "";
                 // this.yanzheng = "";
               }
             } else {
-              this.$message.error(res.data.result);
+              this.$message.error('绑定失败');
               //   if (this.$i18n.locale == "cn") {
               //     this.$message.error("修改失败");
               //   }

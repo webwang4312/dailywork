@@ -30,6 +30,7 @@ module.exports = {
             .set("@components", path.resolve(__dirname, "./src/components"))
             .set("@views", path.resolve(__dirname, "./src/views"))
             .set("@store", path.resolve(__dirname, "./src/store"))
+            .set("@api", path.resolve(__dirname, "./src/request/api"))
 
     },
     configureWebpack: {
@@ -37,6 +38,7 @@ module.exports = {
             'vue': 'Vue',
             'vue-router': 'VueRouter',
             'element-ui': 'ELEMENT',
+            'axios': 'axios',
 
         },
         plugins: [

@@ -6,13 +6,11 @@
       :style="{ width: '45%', height: '100%' }"
       ><div class="slide">
         <div class="baoguo">
-          <span class="lefticon" @click="login" v-if="$store.state.login">
+          <span class="lefticon" @click="login" v-if="logins">
             {{ $t("slider[0]") }}</span
           >
-          <span class="lefticon blue" v-if="!$store.state.login">{{
-            $store.state.username
-          }}</span>
-          <p class="lefticon" v-if="!$store.state.login" @click="exitLogin">
+          <span class="lefticon blue" v-if="loginss">{{ username }}</span>
+          <p class="lefticon" v-if="loginss" @click="exitLogin">
             {{ $t("slider[1]") }}
           </p>
         </div>
@@ -37,43 +35,37 @@
             <span :class="{ active: cur === i }">{{ item.title }}</span>
           </li>
           <!-- 查看绑定钱包 -->
-          <li v-if="$store.state.fastokenbind" @click="goFastoken">
-            <div id="slider_left" v-if="!$store.state.fastoken"></div>
+          <li v-if="fastokenbind" @click="goFastoken">
+            <div id="slider_left" v-if="fastoken11"></div>
             <img
               src="../../assets/images/index/绑定钱包.png"
-              v-if="$store.state.fastoken"
+              v-if="fastoken1"
             />
             <img
               src="../../assets/images/index/绑定钱包(1).png"
-              v-if="!$store.state.fastoken"
+              v-if="fastoken11"
             />
 
-            <span
-              v-if="!$store.state.fastoken"
-              style="color: rgba(0, 159, 205, 1)"
-            >
+            <span v-if="fastoken11" style="color: rgba(0, 159, 205, 1)">
               {{ $t("slider[2]") }}</span
             >
-            <span v-if="$store.state.fastoken"> {{ $t("slider[2]") }}</span>
+            <span v-if="fastoken1"> {{ $t("slider[2]") }}</span>
           </li>
-          <li v-if="$store.state.fastokenbind2" @click="goFastoken2">
-            <div id="slider_left" v-if="!$store.state.fastoken2"></div>
+          <li v-if="fastokenbind2" @click="goFastoken2">
+            <div id="slider_left" v-if="fastoken22"></div>
             <img
               src="../../assets/images/index/绑定钱包.png"
-              v-if="$store.state.fastoken2"
+              v-if="fastoken2"
             />
             <img
               src="../../assets/images/index/绑定钱包(1).png"
-              v-if="!$store.state.fastoken2"
+              v-if="fastoken22"
             />
 
-            <span
-              v-if="!$store.state.fastoken2"
-              style="color: rgba(0, 159, 205, 1)"
-            >
+            <span v-if="fastoken22" style="color: rgba(0, 159, 205, 1)">
               {{ $t("slider[3]") }}</span
             >
-            <span v-if="$store.state.fastoken2"> {{ $t("slider[3]") }}</span>
+            <span v-if="fastoken2"> {{ $t("slider[3]") }}</span>
           </li>
         </ul>
       </div>
@@ -102,6 +94,16 @@ export default {
     return {
       cur: "",
       sticky: false,
+      username: "",
+      logins: true,
+      loginss: true,
+      fastokenbind: false,
+      fastokenbind2: false,
+      fastoken: true,
+      fastoken2: false,
+      fastoken22: false,
+      fastoken1: false,
+      fastoken11: false,
       nav: [
         // {
         //   path: "/index",
@@ -161,9 +163,46 @@ export default {
     };
   },
   created() {
-    if(this.$store.state.username==false||this.$store.state.username==''){
-         this.$store.commit("loginfalse");
+    // console.log(localStorage.getItem('sliderfastoken1'));
+    if (localStorage.getItem("walletAddress") == null) {
+      this.fastokenbind = false;
+      this.fastokenbind2 = false;
+    } else if (localStorage.getItem("walletAddress") == "") {
+      this.fastokenbind = true;
+      this.fastokenbind2 = false;
+    } else {
+      this.fastokenbind = false;
+      this.fastokenbind2 = true;
+      this.fastoken2 = true;
     }
+    this.username = localStorage.getItem("username");
+    this.logins = localStorage.getItem("login");
+    if (localStorage.getItem("sliderfastoken1") == "true") {
+      this.fastoken1 = false;
+      this.fastoken11 = true;
+    } else {
+      this.fastoken1 = true;
+      this.fastoken11 = false;
+    }
+    if (localStorage.getItem("sliderfastoken2") == "true") {
+      this.fastoken2 = false;
+      this.fastoken22 = true;
+    } else {
+      this.fastoken2 = true;
+      this.fastoken22 = false;
+    }
+    // console.log(this.logins);
+    if (this.logins == null || this.logins == false) {
+      this.logins = true;
+      this.loginss = false;
+    } else {
+      this.logins = false;
+      this.loginss = true;
+    }
+    // alert(this.$store.state.login);
+    // if(this.$store.state.username==false||this.$store.state.username==''){
+    //      this.$store.commit("loginfalse");
+    // }
     this.$store.commit("showSliderFalse");
     if (this.$i18n.locale == "cn") {
       this.nav = cn.nav;
@@ -198,22 +237,28 @@ export default {
   },
   methods: {
     goFastoken() {
-      this.$store.commit("fastoken");
+      localStorage.setItem("sliderfastoken1", true);
+      // this.$store.commit("fastoken");
       this.$router.push({
         path: "/fastoken",
       });
     },
     goFastoken2() {
-      this.$store.commit("fastoken2");
+      localStorage.setItem("sliderfastoken2", true);
+      // this.$store.commit("fastoken2");
       this.$router.push({
         path: "/fastokensecond",
       });
     },
     exitLogin() {
       // 清除缓存
+      localStorage.setItem("login", true);
       window.sessionStorage.clear();
       localStorage.clear();
       this.$store.commit("login");
+      this.$router.push({
+        path: "/index",
+      });
       this.reload();
     },
     login() {
@@ -245,6 +290,8 @@ export default {
       this.$store.commit("menCeng");
     },
     gorouter(index) {
+      localStorage.setItem("sliderfastoken2", "false");
+      localStorage.setItem("sliderfastoken1", "false");
       this.$router.push({ path: index });
       // this.$store.commit("showSliderFalse");
       this.$store.commit("menCeng");

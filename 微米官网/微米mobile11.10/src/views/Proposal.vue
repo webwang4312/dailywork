@@ -556,7 +556,7 @@ export default {
   },
   components: { slider, vfooter },
   created() {
-    window.scrollTo(0, -1);
+  window.scrollTo(0, 0);
     this.votealllistnumber = 1;
     this.voteallnumber = 1;
     this.voteinnumber = 1;
@@ -615,12 +615,20 @@ export default {
     goToproposalDetail(index, state) {
       // console.log(index, state);
       if (!localStorage.getItem("token")) {
-        this.$message({
-          message: "请先去登录或注册",
-          center: true,
-          type: "error",
-          duration: 1000,
-        });
+        this.$toast.fail({
+                  duration: 1000, // 持续展示 toast
+                  forbidClick: true, // 禁用背景点击
+                  loadingType: "spinner",
+                  message:'请先去登录或注册',
+                  position: top,
+                });
+        
+        // this.$message({
+        //   message: "请先去登录或注册",
+        //   center: true,
+        //   type: "error",
+        //   duration: 1000,
+        // });
       } else {
         //   // console.log(index, state);
         this.$router.push({
@@ -744,9 +752,9 @@ export default {
                 } else {
                   this.votealllist[i].name = res.data.result.list[i].name;
                 }
-                if (this.votealllist[i].title.length > 5) {
+                if (this.votealllist[i].title.length >10) {
                   this.votealllist[i].title =
-                    res.data.result.list[i].title.substring(0, 5) + "...";
+                    res.data.result.list[i].title.substring(0, 10) + "...";
                 } else {
                   this.votealllist[i].title = res.data.result.list[i].title;
                 }
@@ -807,9 +815,9 @@ export default {
             } else {
               this.voteall[i].name = res.data.result.list[i].name;
             }
-            if (this.voteall[i].title.length > 5) {
+            if (this.voteall[i].title.length > 10) {
               this.voteall[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.voteall[i].title = res.data.result.list[i].title;
             }
@@ -856,9 +864,9 @@ export default {
             } else {
               this.votein[i].name = res.data.result.list[i].name;
             }
-            if (this.votein[i].title.length > 5) {
+            if (this.votein[i].title.length >10) {
               this.votein[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votein[i].title = res.data.result.list[i].title;
             }
@@ -905,9 +913,9 @@ export default {
             } else {
               this.voteend[i].name = res.data.result.list[i].name;
             }
-            if (this.voteend[i].title.length > 5) {
+            if (this.voteend[i].title.length > 10) {
               this.voteend[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.voteend[i].title = res.data.result.list[i].title;
             }
@@ -953,9 +961,9 @@ export default {
             } else {
               this.voteagree[i].name = res.data.result.list[i].name;
             }
-            if (this.voteagree[i].title.length > 5) {
+            if (this.voteagree[i].title.length > 10) {
               this.voteagree[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.voteagree[i].title = res.data.result.list[i].title;
             }
@@ -1000,9 +1008,9 @@ export default {
             } else {
               this.votereject[i].name = res.data.result.list[i].name;
             }
-            if (this.votereject[i].title.length > 5) {
+            if (this.votereject[i].title.length > 10) {
               this.votereject[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votereject[i].title = res.data.result.list[i].title;
             }
@@ -1047,9 +1055,9 @@ export default {
             } else {
               this.votejiean[i].name = res.data.result.list[i].name;
             }
-            if (this.votejiean[i].title.length > 5) {
+            if (this.votejiean[i].title.length >10) {
               this.votejiean[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votejiean[i].title = res.data.result.list[i].title;
             }
@@ -1094,9 +1102,9 @@ export default {
             } else {
               this.votebohui[i].name = res.data.result.list[i].name;
             }
-            if (this.votebohui[i].title.length > 5) {
+            if (this.votebohui[i].title.length > 10) {
               this.votebohui[i].title =
-                res.data.result.list[i].title.substring(0, 5) + "...";
+                res.data.result.list[i].title.substring(0, 10) + "...";
             } else {
               this.votebohui[i].title = res.data.result.list[i].title;
             }
@@ -1120,6 +1128,11 @@ export default {
 };
 </script>
 <style lang="less">
+.red{
+  width: 100%;
+  color:white!important;
+  background: crimson;
+}
 .van-tabs__wrap {
   z-index: 0;
 }
@@ -1161,7 +1174,7 @@ export default {
   height: auto;
   background-color: black;
   .van-tabs__nav {
-    background: #0c0c0c;
+    background:black;
   }
   .van-tabs {
     margin-top: 10px;
@@ -1190,7 +1203,8 @@ export default {
     height: auto;
     .content_header {
       width: 100%;
-      margin-top: 10px;
+      margin: 0 auto;
+      margin-top: 20px;
       align-items: center;
       display: flex;
       flex-direction: row;
@@ -1201,7 +1215,7 @@ export default {
       }
       img:nth-of-type(1) {
         position: relative;
-        left: 30px;
+        left: 24px;
         top: 3px;
       }
       div:nth-child(2) {
@@ -1221,7 +1235,7 @@ export default {
       }
       input {
         position: relative;
-        left: 0px;
+        left:-8px;
         width: 282px;
         height: 30px;
         background: rgba(255, 255, 255, 0.1);

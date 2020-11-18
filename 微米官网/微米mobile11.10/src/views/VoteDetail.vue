@@ -13,7 +13,7 @@
               <div>投票倒计时</div>
             </div>
             <div class="vote_content_footer" v-if="toupiaoend">
-              {{ countDownList }}
+              <van-count-down :time="time" format="DD 天 HH 时 mm 分 ss 秒" />
             </div>
             <div class="vote_content_footer" v-else>投票时间已结束</div>
           </li>
@@ -114,11 +114,13 @@ export default {
       toupiaoend: false,
       name: "",
       createtime: "",
+      nowTime:'',
+    time:''
     };
   },
   components: { votenumber, slider, vFooter },
   created() {
-     window.scrollTo(0, -1);
+   window.scrollTo(0, 0);
     //  console.log(this.$route.query.state);
     this.voteDetail();
     this.countDown();
@@ -128,7 +130,7 @@ export default {
   methods: {
     // 投票中设置
     reject1() {
-      console.log(this.$store.state.votenumberstate);
+      // console.log(this.$store.state.votenumberstate);
       this.$store.commit("voteNumber");
       localStorage.setItem("activityId", this.$route.query.activityId);
       localStorage.setItem("toupiaostate", 0);
@@ -144,13 +146,14 @@ export default {
     countDown(it) {
       var interval = setInterval(() => {
         // 获取当前时间，同时得到活动结束时间数组
-        let newTime = new Date().getTime(); // 对结束时间进行处理渲染到页面
+       let newTime = new Date(this.nowTime).getTime(); // 对结束时间进行处理渲染到页面
         // console.log(newTime);
         let endTime = new Date(this.endTime).getTime();
         // console.log(endTime);
         let obj = null; // 如果活动未结束，对时间进行处理
         if (endTime - newTime > 0) {
           this.toupiaoend = true;
+          let time2 = endTime - newTime;
           let time = (endTime - newTime) / 1000; // 获取天、时、分、秒
           let day = parseInt(time / (60 * 60 * 24));
           let hou = parseInt((time % (60 * 60 * 24)) / 3600);
@@ -162,6 +165,7 @@ export default {
             min: this.timeFormat(min),
             sec: this.timeFormat(sec),
           };
+          this.time = time2;
         } else {
           this.toupiaoend = false;
           // 活动已结束，全部设置为'00'
@@ -189,11 +193,12 @@ export default {
           })
         )
         .then((res) => {
-          // console.log(res);
+          //  console.log(res);
           let result = res.data.result;
           this.budget = result.budget;
           this.consAmount = result.consAmount;
           this.endTime = result.endTime;
+           this.nowTime = result.nowTime;
           this.plan = result.plan;
           this.prosAmount = result.prosAmount;
           this.summary = result.summary;
@@ -257,6 +262,13 @@ export default {
 };
 </script>
 <style lang="less">
+.van-count-down {
+  font-size: 14px;
+  font-family: "苹方-简";
+  font-weight: normal;
+  line-height: 21px;
+  color: #ffffff;
+}
 #voterejectnumber {
   width: 400px;
   height: 500px;

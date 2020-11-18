@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import {BASEURL} from '@api/api';
 import { country } from "@assets/rule.js";
 var qs = require("qs");
 import crypto from "crypto";
@@ -284,7 +285,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/login/getPhoneCode",
+          `${BASEURL}`+"/weimioffice/login/getPhoneCode",
           qs.stringify({
             phone: this.tel,
             type: 1,
@@ -391,7 +392,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/login/resetPwd",
+           `${BASEURL}`+"/weimioffice/login/resetPwd",
             qs.stringify({
               phone: this.tel,
               password: this.password,

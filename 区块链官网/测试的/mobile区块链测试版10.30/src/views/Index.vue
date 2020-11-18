@@ -304,7 +304,7 @@ export default {
     next();
   },
   created() {
-    this.$i18n.locale = "cn";
+    this.$i18n.locale = "en";
     //  console.log(window.location.href);
     // //  路由路径
     //   console.log(this.$route.path);

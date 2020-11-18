@@ -26,6 +26,11 @@ axios.defaults.baseURL = "http://47.116.69.138:80/";
 // axios.defaults.retryDelay = 1000;
 Vue.use(axios);
 Vue.prototype.$http = axios;
+// import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+
+
+// Vue.use(ElementUI);
 // axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
 //     var config = err.config;
 //     // If config does not exist or the retry option is not set, reject

@@ -328,13 +328,13 @@ import {
   email,
   advice,
 } from "../assets/rule.js";
-import {
-  GET,
-  GETINDEX,
-  GETRECOMMEND,
-  GETNEWS,
-  DOWNBAIPISHU,
-} from "@network/api/api";
+// import {
+//   GET,
+//   GETINDEX,
+//   GETRECOMMEND,
+//   GETNEWS,
+//   DOWNBAIPISHU,
+// } from "@network/api/api";
 
 export default {
   name: "index",

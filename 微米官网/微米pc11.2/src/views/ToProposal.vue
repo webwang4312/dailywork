@@ -218,6 +218,7 @@
 </template>
 
 <script>
+import {BASEURL} from '@api/api';
 var qs = require("qs");
 import Login from "@components/common/Login";
 import Forget from "@components/common/ForgetPassword";
@@ -298,7 +299,7 @@ export default {
        
         this.$http
           .post(
-            "http://192.168.1.194:8003/weimioffice/vote/addMotion",
+            `${BASEURL}`+"/weimioffice/vote/addMotion",
             qs.stringify({
               name: this.name,
               userId: localStorage.getItem("userId"),

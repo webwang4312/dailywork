@@ -487,6 +487,7 @@
 </template>
 
 <script>
+import {BASEURL} from '@api/api';
 var qs = require("qs");
 import Login from "@components/common/Login";
 import Forget from "@components/common/ForgetPassword";
@@ -576,7 +577,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/voteActivityList",
+          `${BASEURL}`+"/weimioffice/vote/voteActivityList",
           qs.stringify({
             type: 0,
             pageNum: this.votealllistnumber,
@@ -671,7 +672,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/voteActivityList ",
+          `${BASEURL}`+"/weimioffice/vote/voteActivityList ",
           qs.stringify({
             type: 0,
             pageNum: this.voteallnumber,
@@ -734,7 +735,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/voteActivityList",
+          `${BASEURL}`+"/weimioffice/vote/voteActivityList",
           qs.stringify({
             type: 1,
             pageNum: this.voteinnumber,
@@ -796,7 +797,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/voteActivityList ",
+          `${BASEURL}`+"/weimioffice/vote/voteActivityList ",
           qs.stringify({
             type: 2,
             pageNum: this.voteendnumber,
@@ -856,7 +857,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/voteActivityList ",
+          `${BASEURL}`+"/weimioffice/vote/voteActivityList ",
           qs.stringify({
             type: 3,
             pageNum: this.voteagreenumber,
@@ -915,7 +916,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          "http://192.168.1.194:8003/weimioffice/vote/voteActivityList ",
+          `${BASEURL}`+"/weimioffice/vote/voteActivityList ",
           qs.stringify({
             type: 4,
             pageNum: this.voterejectnumber,

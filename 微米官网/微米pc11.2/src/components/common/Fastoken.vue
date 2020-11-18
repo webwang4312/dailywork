@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import {BASEURL} from '@api/api';
 var qs = require("qs");
 import crypto from "crypto";
 export default {
@@ -199,7 +200,7 @@ export default {
           .post(
             // 测试上
             //47.105.215.191/weimi/index/getPhoneCode
-            "http://192.168.1.194:8003/weimioffice/login/bindWallet",
+            `${BASEURL}`+"/weimioffice/login/bindWallet",
             qs.stringify({
               walletAddress: this.haxi2,
               hash: this.haxi,

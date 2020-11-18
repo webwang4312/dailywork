@@ -410,13 +410,13 @@ import "../assets/timer/js/jquery-timeLine";
 
 // import { human } from "../components/human";
 import { step } from "../components/step";
-import {
-  GET,
-  GETINDEX,
-  GETRECOMMEND,
-  GETNEWS,
-  DOWNBAIPISHU,
-} from "@network/api/api";
+// import {
+//   GET,
+//   GETINDEX,
+//   GETRECOMMEND,
+//   GETNEWS,
+//   DOWNBAIPISHU,
+// } from "@network/api/api";
 export default {
   name: "about",
   data() {
@@ -442,6 +442,7 @@ export default {
   },
   components: { headertop, swiper },
   created() {
+  
     // 强制刷新一次
     if (location.href.indexOf("#reloaded") == -1) {
       location.href = location.href + "#reloaded";
@@ -937,7 +938,7 @@ a {
 
         .el-carousel__indicators {
           position: relative;
-          top: 25px;
+          top: -1px;
           left: 0px;
           z-index: 20;
           li {
