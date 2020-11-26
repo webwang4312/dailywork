@@ -55,6 +55,7 @@
         <option
           :value="coupon.name"
           v-for="coupon in country"
+          :key="coupon.id"
           class="selectoption"
           >{{ coupon.name }}</option
         >
@@ -1053,14 +1054,22 @@ select {
     height: 40px;
     outline: none;
     border: 1px solid #00ffee;
-    background: rgba(0, 255, 238, 1);
+    background-color: #023f79;
     opacity: 1;
     border-radius: 25px;
     color: rgba(0, 255, 238, 1);
     position: relative;
     top: 18px;
-    span {
-      color: rgba(2, 52, 111, 1);
+      span {
+      color: rgba(0, 255, 238, 1);
+      opacity: 1;
+    }
+  }
+  button:hover{
+    background: #00ffee;
+     span {
+      color: #02346F;
+      opacity: 1;
     }
   }
   .button1 {
