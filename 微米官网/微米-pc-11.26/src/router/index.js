@@ -16,6 +16,11 @@ const routes = [
             import("../components/common/Login.vue"),
     },
     {
+        path: '/ceshi',
+        component: () =>
+            import("../views/ceshi.vue"),
+    },
+    {
         path: "/forgetpassword",
         name: "forgetpassword",
         component: () =>
@@ -71,7 +76,7 @@ const routes = [
         component: () =>
             import("../views/About.vue"),
         meta: {
-            keepAlive:true // bu需要被缓存
+            keepAlive:false // bu需要被缓存
         }
     },
     {

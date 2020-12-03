@@ -192,7 +192,7 @@ export default {
         })
         .then((res) => {
           this.loading = false;
-          // console.log(res);
+            // console.log(res);
           // 取得页数总数
           this.totalNum = res.data[0].total_record[0].total_record;
           // console.log(this.totalNum);
@@ -217,14 +217,14 @@ export default {
                 res.data[0].transaction_list_results[i].transaction_time;
               // console.log(blocktime);
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = res.data[0].timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - blocktime; //9.20
               // console.log(s+'相差');
               // console.log(s/86400000 + "天数");
               // console.log(parseInt(s/86400000*24*60) + "fenzhong");
               let fenzhong = parseInt((s / 86400) * 24 * 60);
-              // console.log(fenzhong);
+              //  console.log(fenzhong);
               if (fenzhong < 60) {
                 if (fenzhong == 0) {
                   times.push("刚刚");
@@ -328,7 +328,7 @@ export default {
                 res.data[0].transaction_list_results[i].transaction_time;
               // console.log(blocktime);
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = res.data[0].timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - blocktime; //9.20
               // console.log(s+'相差');

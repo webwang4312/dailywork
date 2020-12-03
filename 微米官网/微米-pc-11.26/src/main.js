@@ -12,7 +12,6 @@ import 'lib-flexible';
 import VueParticles from 'vue-particles';
 
 Vue.use(VueParticles)
-
 // video引入
 // import VueVideoPlayer from "vue-video-player";
 // import "video.js/dist/video-js.css";
@@ -24,7 +23,7 @@ Vue.component('paginate', Paginate);
 // video引入
 Vue.config.productionTip = false;
 // 防止重复点击
-import preventClick from '@assets/clickStatefrom'  // 根据自己的路径
+import preventClick from '@assets/clickStatefrom';  // 根据自己的路径
 Vue.use(preventClick);
 // import ViewUI from 'view-design';
 // import 'view-design/dist/styles/iview.css';

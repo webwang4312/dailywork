@@ -63,6 +63,9 @@ export default {
 <style lang="less">
 @import "./assets/css/normalize.css";
 //@import "./assets/css/media.less";
+#app{
+  width: 100%;
+}
 a {
   text-decoration: none;
 }

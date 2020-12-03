@@ -201,11 +201,11 @@ export default {
     this.nowLang = this.$i18n.locale;
     this.activenum = this.num;
 
-    this.$nextTick(() => {
-      //console.log(this.$refs.pagination);
-      this.$refs.pagination.currentPage = this.medianum;
-    });
-    this.medianum = this.getContextData("currentpage") || 1;
+    // this.$nextTick(() => {
+    //   //console.log(this.$refs.pagination);
+    //   this.$refs.pagination.currentPage = this.medianum;
+    // });
+    this.medianum =  1;
 
     this.getfaqlist();
   },
@@ -289,7 +289,7 @@ export default {
     },
     change(page) {
       this.medianum = page;
-      this.setContextData("currentpage", this.medianum);
+      // this.setContextData("currentpage", this.medianum);
       this.getfaqlist();
     },
     //获取FAQ数据
@@ -306,12 +306,12 @@ export default {
           //this.ppp=res.data.result.length
           //console.log( this.ppp);
           for (let i = 0; i < res.data.result.list.length; i++) {
-            console.log(typeof res.data.result.list[i].id);
+            // console.log(typeof res.data.result.list[i].id);
             res.data.result.list[i].id = String(res.data.result.list[i].id);
           }
           this.faqlist = res.data.result.list;
 
-          console.log(this.faqlist);
+          // console.log(this.faqlist);
           localStorage.setItem("lan", this.nowLang);
         })
         .catch((err) => {
@@ -658,6 +658,7 @@ button {
           height: 30px;
           z-index: 20;
           margin: 0 auto;
+          text-align: center;
 
           img:nth-child(1) {
             position: relative;
@@ -685,7 +686,7 @@ button {
             border: none;
           }
           .ivu-page {
-            margin-left: 35% !important;
+            // margin-left: 35% !important;
           }
           .ivu-page-simple-pager {
             #text {

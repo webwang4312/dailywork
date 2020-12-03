@@ -1,6 +1,7 @@
 <template>
   <div class="index">
     <slider></slider>
+    <canvas id="canvas" style="background:white"></canvas>
     <div>
       <div class="indexheader" @click="showSliderFalse">
         <p>{{ $t("recommendtitle[0]") }}</p>
@@ -360,6 +361,7 @@ export default {
   },
   computed: {},
   mounted() {
+    this.initCanvas()
     this.$nextTick(function() {
       window.scrollTo(0, 0);
       // 代码保证 this.$el 在 document 中
@@ -372,6 +374,34 @@ export default {
   },
 
   methods: {
+    initCanvas() {
+console.log("初始化canvas")
+let canvas = document.getElementById('canvas');
+let ctx = canvas.getContext('2d');
+ctx.beginPath();
+ctx.strokeStyle = "red";
+ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // 绘制
+ctx.moveTo(110, 75);
+ctx.arc(75, 75, 35, 0, Math.PI, false); // 口(顺时针)
+ctx.moveTo(65, 65);
+ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // 左眼
+ctx.moveTo(95, 65);
+ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // 右眼
+ctx.stroke();
+ctx.beginPath();
+ctx.strokeStyle = "red";
+ctx.moveTo(160, 20);
+ctx.lineTo(160, 120);
+ctx.lineTo(260, 120);
+ctx.bezierCurveTo(100, 100, 200, 40, 250, 120);
+// 登录状态下不会出现这行文字，点击页面右上角一键登录
+ctx.lineTo(260,20);
+ctx.stroke();
+ctx.fillRect(150, 10, 50, 50);
+ctx.strokeStyle = "red";
+ctx.fillStyle = "rgba(0,0,0,1)";
+// 登录状态下不会出现这行文字，点击页面右上角一键登录
+},
     showSliderFalse() {
       this.$store.commit("showSliderFalse");
       this.$store.commit("menCengHide");

@@ -929,7 +929,7 @@ export default {
           { headers: { token: localStorage.getItem("token") } }
         )
         .then((res) => {
-          // console.log(res);
+           console.log(res);
           if (res.data.code === 200) {
             var result = res.data.result;
             // 等级

@@ -21,11 +21,11 @@
     >
     </vue-particles>
     <!-- 内容部分 -->
-
+ <headertop ref="headertop"></headertop>
     <div class="bg1" ></div>
     <div class="bg2" ></div>
     <div class="container" >
-      <headertop ref="headertop"></headertop>
+     
       <!-- 顶部栏 -->
       <div class="recommemd" >
         <div class="recommend-title">{{ $t("recommendtitle[0]") }}</div>
@@ -652,9 +652,9 @@ export default {
       }
     },
     // 获得区块高度数值
-    async getHomeData() {
+    getHomeData() {
       let that = this;
-      await that.$http
+      that.$http
         .get(`${BASEURL}`+"/weimioffice/web/content/getHomeData", {
           params: {},
           headers: {},
@@ -685,9 +685,9 @@ export default {
     },
 
     //获取媒体公告数据
-    async getindexrecommend() {
+     getindexrecommend() {
       let that = this;
-      await that.$http
+      that.$http
         .get(
           `${BASEURL}`+"/weimioffice/web/content/getRecommend",
           {
@@ -975,7 +975,7 @@ button {
 
 // 主线
 .index {
-  width: 100%;
+  width:100%;
   position: relative;
   height: 2484px;
   // margin-top: -200px;

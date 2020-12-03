@@ -521,7 +521,7 @@ export default {
             this.transactionlist[0].to_address2 = res.data[0].search_main_transaction_detailInfo[0].to_address.split(
               ","
             );
-            // this.transactionlist[0].from_address.length=7;
+            //  this.transactionlist[0].from_address.length=7;
             if (this.transactionlist[0].from_address.length >= 6) {
               this.from_detail = true;
               let from_address = [];

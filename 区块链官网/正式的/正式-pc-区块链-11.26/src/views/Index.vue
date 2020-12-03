@@ -597,7 +597,7 @@ export default {
       that.$http
         .get("")
         .then((res) => {
-          // console.log(res);
+          //  console.log(res);
           for (
             var i = 0;
             i < res.data[0].transaction_num_for_7.length + 1;
@@ -695,8 +695,9 @@ export default {
       await that.$http
         .get("")
         .then((res) => {
+          //  console.log(res);
           this.loading = false;
-          // console.log(res);
+         
           // 获取首页数据集合
           var cardleftinformation = res.data[0];
           //console.log(cardleftinformation);
@@ -714,14 +715,15 @@ export default {
               let strdate = this.tableData[i].date;
               // console.log(strdate + "shuju");
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              // console.log(Date.parse(new Date()));
+              let timestamp =  cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strdate; //9.20
               // console.log(s+'相差');
               // console.log(s/86400000 + "天数");
               // console.log(parseInt(s/86400000*24*60) + "fenzhong");
               let fenzhong = parseInt((s / 86400) * 24 * 60);
-              //  console.log(fenzhong);
+                // console.log(fenzhong);
               if (fenzhong < 60) {
                 if (fenzhong == 0) {
                   date.push("刚刚");
@@ -767,14 +769,14 @@ export default {
               let times = [];
               let strtime = this.tableData2[j].time;
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
-              // console.log(timestamp + "xianzai");
+              let timestamp = cardleftinformation.timeStamp;
+            // console.log(timestamp + "xianzai");
               let s = timestamp - strtime; //9.20
               // console.log(s+'相差');
               // console.log(s/86400000 + "天数");
               // console.log(parseInt(s/86400000*24*60) + "fenzhong");
               let fenzhong = parseInt((s / 86400) * 24 * 60);
-              // console.log(fenzhong);
+              //  console.log(fenzhong);
               if (fenzhong < 60) {
                 if (fenzhong == 0) {
                   times.push("刚刚");
@@ -804,7 +806,7 @@ export default {
               let strdate = this.tableData[i].date;
               // console.log(strdate + "shuju");
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strdate; //9.20
               // console.log(s+'相差');
@@ -845,14 +847,14 @@ export default {
               let times = [];
               let strtime = this.tableData2[j].time;
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp =cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strtime; //9.20
               // console.log(s+'相差');
               // console.log(s/86400000 + "天数");
               // console.log(parseInt(s/86400000*24*60) + "fenzhong");
               let fenzhong = parseInt((s / 86400) * 24 * 60);
-              // console.log(fenzhong);
+              //  console.log(fenzhong);
               if (fenzhong < 60) {
                 if (fenzhong == 0) {
                   times.push("just");

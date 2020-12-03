@@ -692,7 +692,7 @@ export default {
         .get("")
         .then((res) => {
           this.loading = false;
-          // console.log(res);
+          //  console.log(res);
           this.money = res.data[0].usdt[0].usdt;
           this.money2 = res.data[0].usdt[0].rmb;
           // 获取首页数据集合
@@ -723,7 +723,7 @@ export default {
               let strdate = this.tableData[i].date;
               // console.log(strdate + "shuju");
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strdate; //9.20
               // console.log(s+'相差');
@@ -764,7 +764,7 @@ export default {
               let times = [];
               let strtime = this.tableData2[j].time;
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strtime; //9.20
               // console.log(s+'相差');
@@ -801,7 +801,7 @@ export default {
               let strdate = this.tableData[i].date;
               // console.log(strdate + "shuju");
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strdate; //9.20
               // console.log(s+'相差');
@@ -842,7 +842,7 @@ export default {
               let times = [];
               let strtime = this.tableData2[j].time;
               // 当前日期转时间戳
-              let timestamp = Date.parse(new Date()) / 1000;
+              let timestamp = cardleftinformation.timeStamp;
               // console.log(timestamp + "xianzai");
               let s = timestamp - strtime; //9.20
               // console.log(s+'相差');

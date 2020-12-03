@@ -269,17 +269,17 @@ export default {
       });
     },
     //获取MEDIA
-    async getmedialist() {
+     getmedialist() {
       let that = this;
       var data = Qs.stringify({ pageNum: this.medianum, pageSize: 6 });
-      await that.$http
+      that.$http
         .post(
           `${BASEURL}`+"/weimioffice/web/content/getNews",
           data,
           { headers: { language: this.nowLang } }
         )
         .then((res) => {
-          // console.log(res);
+            //console.log(res);
           //console.log(res.data.result.total);
           this.totalNum = res.data.result.total;
           //console.log(this.totalNum);

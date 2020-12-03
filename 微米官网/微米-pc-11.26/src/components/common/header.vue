@@ -10,46 +10,45 @@
         <div class="headerzong1">
           <div class="header-left">
             <img src="@assets/images/index/logo.png" />
-           
           </div>
-           <button
-              class="selbutton"
-              @click="switchLan()"
-              v-loading.fullscreen.lock="fullscreenLoading"
+          <button
+            class="selbutton"
+            @click="switchLan()"
+            v-loading.fullscreen.lock="fullscreenLoading"
+          >
+            中 / EN
+          </button>
+          <!-- 头部公共部分 -->
+          <template v-if="!$store.state.username">
+            <span @click="logins" id="loginregister">
+              {{ $t("login[0]") }}</span
             >
-              中 / EN
-            </button>
-            <!-- 头部公共部分 -->
-            <template v-if="!$store.state.username">
-              <span @click="logins" id="loginregister">
-                {{ $t("login[0]") }}</span
-              >
-              <!-- <span @click="register" id="loginregister">{{ $t("login[1]") }}</span> -->
-            </template>
-            <div
-              class="header_selsetz"
-              v-if="$store.state.username"
-              @click="iconShow"
-            >
-              <div class="header_selset">
-                <span id="loginregister">{{ $store.state.username }}</span>
+            <!-- <span @click="register" id="loginregister">{{ $t("login[1]") }}</span> -->
+          </template>
+          <div
+            class="header_selsetz"
+            v-if="$store.state.username"
+            @click="iconShow"
+          >
+            <div class="header_selset">
+              <span id="loginregister">{{ $store.state.username }}</span>
 
-                <img
-                  src="../../assets/images/header/矩形 38@2x.png"
-                  :class="{ header_icon: true, transform: transform }"
-                />
-              </div>
-
-              <div class="header_ulul" v-show="iconshow" @mouseleave="iconHide">
-                <img src="@assets/images/header/矩形 37.png" alt="" />
-                <ul>
-                  <li @click="fastoken" v-if="watch">绑定钱包</li>
-                  <li @click="fastokensecond" v-else>查看钱包</li>
-                  <div class="fastline"></div>
-                  <li @click="leavelogin">退出登录</li>
-                </ul>
-              </div>
+              <img
+                src="../../assets/images/header/矩形 38@2x.png"
+                :class="{ header_icon: true, transform: transform }"
+              />
             </div>
+
+            <div class="header_ulul" v-show="iconshow" @mouseleave="iconHide">
+              <img src="@assets/images/header/矩形 37.png" alt="" />
+              <ul>
+                <li @click="fastoken" v-if="watch">绑定钱包</li>
+                <li @click="fastokensecond" v-else>查看钱包</li>
+                <div class="fastline"></div>
+                <li @click="leavelogin">退出登录</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div>
           <div class="index_line"></div>
@@ -83,6 +82,7 @@ export default {
   name: "index",
   data() {
     return {
+      sticky: false,
       active: "",
       // 头部公共部分
       xianzhi: false,
@@ -107,7 +107,9 @@ export default {
       watch: localStorage.getItem("walletAddress") === "",
     };
   },
-
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
   created() {
     // console.log(this.username);
     // window.addEventListener("storage", this.pageFresh);
@@ -203,9 +205,22 @@ export default {
 
   destroyed() {
     // 滚动取消
+    window.removeEventListener("scroll", this.handleScroll);
     window.removeEventListener("scroll", this.getScroll);
   },
   methods: {
+    handleScroll() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      // console.log(scrollTop);
+      if (scrollTop > 10) {
+        this.sticky = true;
+      } else {
+        this.sticky = false;
+      }
+    },
     // pageFresh(e) {
     //   if (e.key === "loginState") {
     //     this.$store.replaceState(
@@ -296,6 +311,13 @@ export default {
 };
 </script>
 <style lang="less">
+.sticky {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: black;
+  z-index: 999;
+}
 #loginregister {
   font-size: 18px;
   font-family: PingFang SC;
@@ -366,14 +388,14 @@ export default {
   line-height: 30px !important;
   position: relative;
   left: 0px;
-  top: -2px!important;
+  top: -2px !important;
   cursor: pointer;
 }
 .selbutton {
   width: 83px !important;
   height: 36px !important;
- 
-margin-left: 60%;
+
+  margin-left: 60%;
   //PADDING-left: 75%;
 }
 #submit {
@@ -456,8 +478,8 @@ button {
     display: flex;
     flex-direction: column;
     z-index: 30;
-    .headerzong1{
- display: flex;
+    .headerzong1 {
+      display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
@@ -488,11 +510,11 @@ button {
         width: 0px;
         border: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: 10px;
-          height: 40px;
-          line-height: 40px !important;
+        height: 40px;
+        line-height: 40px !important;
       }
       .nav_li {
-        width: 170px ;
+        width: 170px;
         color: rgba(0, 159, 205, 1) !important;
         border-top: 2px solid rgba(0, 159, 205, 1);
         font-weight: 600;
@@ -509,12 +531,15 @@ button {
         flex-direction: row;
         align-items: center;
       }
-      .div1 {
-         width: 170px;
-         text-align:center;
-         vertical-align:middle;
+      li:hover{
         
-        }
+         color: rgba(0, 159, 205, 1) !important;
+      }
+      .div1 {
+        width: 170px;
+        text-align: center;
+        vertical-align: middle;
+      }
     }
   }
 }

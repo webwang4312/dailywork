@@ -142,6 +142,7 @@ const router = new VueRouter({
             $(function() {
                 // console.log('haha')
                 $(window).scrollTop(0);
+                
              });
              window.scrollTo(0,0)
             return { x: 0, y: 0 }

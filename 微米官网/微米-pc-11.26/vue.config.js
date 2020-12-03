@@ -39,7 +39,6 @@ module.exports = {
             'vue-router': 'VueRouter',
             'element-ui': 'ELEMENT',
             'axios': 'axios',
-
         },
         plugins: [
             new webpack.ProvidePlugin({

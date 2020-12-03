@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="weibo">
-    <textarea
+   <textarea
       class="weibo-text"
       v-model="text"
       @keyup.shift.13="fabu"
@@ -36,13 +36,44 @@
     <button @click="clearCookie">清除缓存cookie</button>
     {{ num }}
     <button @click="numjia">加</button>
+    <count-down
+         :currentTime="startTime"       
+   :startTime="startTime"
+   :endTime="endTime"
+   :tipText="'距离订单开始还有'"
+                :tipTextEnd="'距离订单关闭还剩'"
+                :endText="'订单已关闭'"
+   :dayTxt="'天'"
+   :hourTxt="'小时'"
+   :minutesTxt="'分钟'"
+   :secondsTxt="'秒'" style="line-height:20px;color:red;font-size:16px">
+</count-down>
+   
   </div>
 </template>
 
 <script>
+import CountDown from 'vue2-countdown';
 export default {
   data() {
     return {
+        // 留言的内容
+      xhs: [],
+      // 输入的内容
+      text: "",
+      // 规定输入的长度
+      len: "100",
+      d: "",
+      h: "",
+      m: "",
+      s: "",
+      username: "", // 用户名
+      password: "", // 密码
+      isChecked: false, // 记住密码
+        currentTime:0,
+                startTime:1607578279,
+                endTime:1607578339,
+
       // 留言的内容
       xhs: [],
       // 输入的内容
@@ -58,6 +89,10 @@ export default {
       isChecked: false // 记住密码
     };
   },
+  
+components: {
+    CountDown
+},
   computed: {
     num() {
       return this.$store.state.num;
@@ -72,6 +107,13 @@ export default {
   },
 
   methods: {
+     countDownS_cb: function (x) {
+    console.log(x)
+  },
+  countDownE_cb: function (x) {
+    console.log(x)
+  },
+
     numjia() {
       // this.$store.commit("numjia", 15);
       this.$store.dispatch('aEdit',{age:15})
@@ -182,7 +224,7 @@ p {
 
 .weibo {
   width: 600px;
-  border: 1px solid #ccc;
+ border: 1px solid #ccc;
   margin: 100px auto;
   padding: 10px;
 }
