@@ -354,7 +354,7 @@ export default {
       that.$http
         .post(
           // 测试上
-          "http://47.105.215.191/weimi/index/getPhoneCode",
+          "http://47.98.110.210/weimi/index/getPhoneCode",
           qs.stringify({
             phone: that.allphone,
             type: 0,
@@ -468,10 +468,12 @@ export default {
         this.ruleForm.yaoqingma !== ""
       ) {
         this.$http
+        // 47.105.215.191
         // 测试版
         // 192.168.1.60
+        //12.9测试版本47.98.110.210
           .post(
-            "http://47.105.215.191/weimi/index/register",
+            "http://47.98.110.210/weimi/index/register",
             qs.stringify({
               // 昵称
               nickName: this.ruleForm.name,

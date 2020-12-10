@@ -42,7 +42,7 @@
             />
           </div>
 
-          <div class="header_ulul" v-if="iconshow" @mouseleave="iconHide">
+          <div class="header_ululss" v-if="iconshow" @mouseleave="iconHide">
             <img src="../../assets/images/header/矩形 37.png" alt="" />
             <ul>
               <li @click="fastoken" v-if="watch">绑定钱包</li>
@@ -322,7 +322,7 @@ export default {
             top: 0px;
           }
         }
-        .header_ulul {
+        .header_ululss {
           position: absolute;
           // top: 110px;
           width: 108px;

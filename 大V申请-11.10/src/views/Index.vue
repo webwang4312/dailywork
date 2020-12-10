@@ -1322,7 +1322,7 @@ export default {
       // 47.101.145.253
       // 正式版
       // 47.105.215.191
-        .post("http://47.105.215.191/batchupfile", form, "form")
+        .post("http://47.98.110.210/batchupfile", form, "form")
         .then((res) => {
           // console.log(res);
           if ((res.data.code = 200)) {
@@ -1420,9 +1420,9 @@ export default {
         // this.$refs.icon.submit();
         that.$http
         // 测试版
-        // 192.168.1.60
+        // 192.168.1.60 47.98.110.210
         //47.105.215.191
-          .post("http://47.105.215.191/weimi/news/settlement", datalist, {
+          .post("http://47.98.110.210/weimi/news/settlement", datalist, {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
           .then((res) => {

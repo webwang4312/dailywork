@@ -11,72 +11,11 @@ Vue.use(VueRouter);
 const routes = [
     { path: '/', redirect: '/index' },
     {
-        path: '/login',
-        component: () =>
-            import("../components/common/Login.vue"),
-    },
-    {
-        path: '/ceshi',
-        component: () =>
-            import("../views/ceshi.vue"),
-    },
-    {
-        path: "/forgetpassword",
-        name: "forgetpassword",
-        component: () =>
-            import("../components/common/ForgetPassword.vue"),
-        meta: {
-            keepAlive: false // 需要被缓存
-        }
-    },
-    {
-        path: "/swiper",
-        name: "swiper",
-        component: () =>
-            import("../components/common/swiper.vue"),
-        meta: {
-            keepAlive: false // 需要被缓存
-        }
-    },
-    {
-        path: "/fastoken",
-        name: "fastoken",
-        component: () =>
-            import("../components/common/Fastoken.vue"),
-        meta: {
-            keepAlive: false // 需要被缓存
-        }
-    },
-    {
-        path: "/fastokensecond",
-        name: "fastokensecond",
-        component: () =>
-            import("../components/common/FastokenSecond.vue"),
-        meta: {
-            keepAlive: false // 需要被缓存
-        }
-    },
-
-    {
-        path: '/header',
-        component: () =>
-            import("../components/common/header.vue"),
-    },
-    {
         path: '/index',
         name: 'index',
         component: resolve => require(['../views/Index.vue'], resolve),
         meta: {
             keepAlive: false // 需要被缓存
-        }
-    },
-    {
-        path: "/about",
-        name: "about",
-        component: () =>
-            import("../views/About.vue"),
-        meta: {
-            keepAlive:false // bu需要被缓存
         }
     },
     {
@@ -88,6 +27,16 @@ const routes = [
             keepAlive: false // 需要被缓存
         }
     },
+    {
+        path: "/about",
+        name: "about",
+        component: () =>
+            import("../views/About.vue"),
+        meta: {
+            keepAlive: true// bu需要被缓存
+        }
+    },
+    
     {
         path: '/news',
         name: 'news',
@@ -106,15 +55,7 @@ const routes = [
             keepAlive: false // 需要被缓存
         }
     },
-    {
-        path: "/detail",
-        name: "detail",
-        component: () =>
-            import("../views/Detail.vue"),
-        meta: {
-            keepAlive: false // 需要被缓存
-        }
-    },
+    
     {
         path: "/proposal",
         name: "proposal",
@@ -160,6 +101,77 @@ const routes = [
             keepAlive: false // 需要被缓存
         }
     },
+    {
+        path: "/developer",
+        name: "developer",
+        component: () =>
+            import("../views/Developer.vue"),
+        meta: {
+            keepAlive: false // 需要被缓存
+        }
+    },
+    {
+        path: "/detail",
+        name: "detail",
+        component: () =>
+            import("../views/Detail.vue"),
+        meta: {
+            keepAlive: false // 需要被缓存
+        }
+    },
+    {
+        path: '/login',
+        component: () =>
+            import("../components/common/Login.vue"),
+    },
+    {
+        path: '/ceshi',
+        component: () =>
+            import("../views/ceshi.vue"),
+    },
+    {
+        path: "/forgetpassword",
+        name: "forgetpassword",
+        component: () =>
+            import("../components/common/ForgetPassword.vue"),
+        meta: {
+            keepAlive: false // 需要被缓存
+        }
+    },
+    {
+        path: "/swiper",
+        name: "swiper",
+        component: () =>
+            import("../components/common/swiper.vue"),
+        meta: {
+            keepAlive: true // 需要被缓存
+        }
+    },
+    {
+        path: "/fastoken",
+        name: "fastoken",
+        component: () =>
+            import("../components/common/Fastoken.vue"),
+        meta: {
+            keepAlive: false // 需要被缓存
+        }
+    },
+    {
+        path: "/fastokensecond",
+        name: "fastokensecond",
+        component: () =>
+            import("../components/common/FastokenSecond.vue"),
+        meta: {
+            keepAlive: false // 需要被缓存
+        }
+    },
+
+    {
+        path: '/header',
+        component: () =>
+            import("../components/common/header.vue"),
+    },
+
 
 
 ];

@@ -322,7 +322,11 @@
           <li>
             <div class="foot-box1">
               <div class="circle">
-                 <img src="@assets/images/footer/github.png" @click="github" style="position:relative;left:10px" />
+                <img
+                  src="@assets/images/footer/github.png"
+                  @click="github"
+                  style="position:relative;left:10px"
+                />
               </div>
             </div>
           </li>
@@ -449,12 +453,11 @@ export default {
   },
   components: { headertop, swiper },
   created() {
-  
     // 强制刷新一次
-    if (location.href.indexOf("#reloaded") == -1) {
-      location.href = location.href + "#reloaded";
-      location.reload();
-    }
+    // if (location.href.indexOf("#reloaded") == -1) {
+    //   location.href = location.href + "#reloaded";
+    //   location.reload();
+    // }
     this.nowLang = this.$i18n.locale;
     //console.log(this.nowLang);
     if (this.nowLang == "cn") {
@@ -626,8 +629,8 @@ export default {
     gotohide() {
       this.show = false;
     },
-        github(){
- window.open("https://github.com/uenctech");
+    github() {
+      window.open("https://github.com/uenctech");
     },
     telegram() {
       window.open("https://t.me/UniversalEnergyChain1");
@@ -1295,7 +1298,7 @@ a {
     justify-content: space-between;
     // z-index: 20;
     .foot-box {
-       width: 500px;
+      width: 500px;
       display: flex;
       flex-direction: row;
       position: relative;

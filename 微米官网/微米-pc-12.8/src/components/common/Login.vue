@@ -881,7 +881,7 @@ export default {
               // this.password1 = "";
               this.$store.state.username = res.data.result.username;
               // console.log(this.$store.state.username)
-               localStorage.setItem("username",res.data.result.username);
+               localStorage.setItem("uenc-username",res.data.result.username);
               const store = {
                 username: res.data.result.username,
                 userId: res.data.result.userId,
@@ -966,16 +966,16 @@ input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
 #imgcode {
-  width: 70px;
-  height: 29px;
-  background: white;
-  color: black;
-  line-height: 29px;
+  width: 70px!important;
+  height: 29px!important;
+  background: white!important;
+  color: black!important;
+  line-height: 29px!important;
   position: relative;
-  left: 225px;
-  top: -27px;
-  cursor: pointer;
-  font-size: 16px;
+  left: 225px!important;
+  top: -27px!important;
+  cursor: pointer!important;
+  font-size: 16px!important;
 }
 .check {
   position: absolute;

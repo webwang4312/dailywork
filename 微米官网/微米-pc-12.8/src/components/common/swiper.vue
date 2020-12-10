@@ -1,6 +1,6 @@
 <template>
   <div class="swiper">
-    <div class="block">
+    <div class="blocke">
       <el-carousel indicator-position="outside" :interval="5000">
         <el-carousel-item v-for="item in human" :key="item.id">
           <div class="information" v-if="abouttrue">
@@ -48,16 +48,17 @@ export default {
 
 <style lang="less">
 .swiper{
-.block {
+.blocke {
   height: 532px;
+ 
   img {
     width: 250px;
     height: 300px;
     z-index: 20;
     opacity: 1;
-    position: relative;
-    left: 151px;
-    top: -336px;
+    position: relative!important;
+    left: 151px!important;
+    top: -336px!important;
   }
   .information {
     width: 1000px;

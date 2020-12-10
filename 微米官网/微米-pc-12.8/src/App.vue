@@ -48,14 +48,18 @@ export default {
     },
   },
   mounted() {
-   if (!!window.ActiveXObject || 'ActiveXObject' in window) {
-      window.addEventListener('hashchange', () => {
-          let currentPath = window.location.hash.slice(1)
+    if (!!window.ActiveXObject || "ActiveXObject" in window) {
+      window.addEventListener(
+        "hashchange",
+        () => {
+          let currentPath = window.location.hash.slice(1);
           if (this.$route.path !== currentPath) {
-              this.$router.push(currentPath);// 主动更改路由界面
+            this.$router.push(currentPath); // 主动更改路由界面
           }
-      }, false);
-  }
+        },
+        false
+      );
+    }
     // 关闭浏览器窗口的时候清空浏览器缓存在localStorage的数据
   },
 };
@@ -63,7 +67,7 @@ export default {
 <style lang="less">
 @import "./assets/css/normalize.css";
 //@import "./assets/css/media.less";
-#app{
+#app {
   width: 100%;
 }
 a {

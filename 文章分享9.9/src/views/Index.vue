@@ -187,9 +187,10 @@ export default {
       this.$http
         // 测试版
         // 192.168.1.60:8080
+        //12.9测试版本47.98.110.210:8080
         // 上线版
         // 47.105.215.191
-        .post("http://192.168.1.60:8080/weimi/news/webNewsInfo", infor)
+        .post("http://47.98.110.210:8080/weimi/news/webNewsInfo", infor)
         .then((res) => {
           // console.log(res);
           // 头像

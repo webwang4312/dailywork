@@ -1,5 +1,5 @@
 <template>
-  <div class="proposal" >
+  <div class="proposal">
     <!-- <vue-particles
       color="#dedede"
       :particleOpacity="0.5"
@@ -19,41 +19,49 @@
       class="lizi"
     >
     </vue-particles> -->
-    <login v-if="$store.state.showlogin" ref="login" ></login>
+    <login v-if="$store.state.showlogin" ref="login"></login>
     <forget v-if="$store.state.forget"></forget>
     <fastoken v-if="$store.state.fastoken"></fastoken>
 
     <div class="partnertop">
-      <headersecond ></headersecond>
+      <headersecond></headersecond>
       <div class="partnertop-content">
         <span class="top_title"
           ><img
             src="@assets/images/header/主页.png"
             @click="index()"
-            style="position: relative;top:2px"
+            style="position: relative;top:2px;left:-3px"
           />
-          <span>当前位置：</span>
-          <span> 关于社区></span>
+          <span>当前位置:</span>
+          <span>关于社区></span>
           提案</span
         >
       </div>
     </div>
     <div class="partnerfooter">
       <div class="partnerfooter-content">
-        <input
-          type="text"
-          placeholder="请输入标题或名字"
-          class="search"
-          v-model="searchnumber"
-          @keyup="enter"
-        />
-        <img
-          src="@assets/images/proposal/搜索.png"
-          class="searchimg"
-          @click="searchAll"
-        />
-        <img src="@assets/images/proposal/组 2.png" class="searchimg2" />
-        <button @click="fabu" class="fabu">发布</button>
+        <div class="partnerfooter_ce">
+          <input
+            type="text"
+            placeholder="请输入标题或名字"
+            class="search"
+            v-model="searchnumber"
+            @keyup="enter"
+          />
+          <img
+            src="@assets/images/proposal/搜索.png"
+            class="searchimg"
+            @click="searchAll"
+          />
+
+          <button @click="fabu" class="fabu">
+            <img
+              src="@assets/images/proposal/组 2.png"
+              class="searchimg2"
+            /><span>发布</span>
+          </button>
+        </div>
+
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="全部" name="first" class="votefirst"
             ><ul id="all_list" v-if="voteall.length !== 0">
@@ -97,7 +105,7 @@
                   v-else-if="
                     item.state === '-2' ||
                       item.state === '-3' ||
-                      item.state === '-5'||
+                      item.state === '-5' ||
                       item.state === '-4'
                   "
                 >
@@ -121,7 +129,10 @@
                 <div class="vote_type" v-else-if="item.state === '2'">
                   <span>投票中</span>
                 </div>
-                <div class="vote_type" v-else-if="item.state === '-5'||item.state === '-4'">
+                <div
+                  class="vote_type"
+                  v-else-if="item.state === '-5' || item.state === '-4'"
+                >
                   <span>监督驳回</span>
                 </div>
                 <div class="vote_type" v-else-if="item.state === '5'">
@@ -192,7 +203,14 @@
               <li
                 v-for="item in voteend"
                 :key="item"
-                @click="goToVoteDetail(item.activityId, item.state,item.name,item.createTime)"
+                @click="
+                  goToVoteDetail(
+                    item.activityId,
+                    item.state,
+                    item.name,
+                    item.createTime
+                  )
+                "
               >
                 <div class="vote_title">
                   <span>{{ item.title }}</span
@@ -380,11 +398,14 @@
                 <div class="vote_type" v-if="item.state === '-2'">
                   <span>审议驳回</span>
                 </div>
-               
+
                 <div class="vote_type" v-else-if="item.state === '-3'">
                   <span>投票驳回</span>
                 </div>
-                <div class="vote_type" v-else-if="item.state === '-5'||item.state === '-4'">
+                <div
+                  class="vote_type"
+                  v-else-if="item.state === '-5' || item.state === '-4'"
+                >
                   <span>监督驳回</span>
                 </div>
               </li>
@@ -475,13 +496,15 @@
                 <div class="vote_type" v-else-if="item.state === '2'">
                   <span>投票中</span>
                 </div>
-                <div class="vote_type" v-else-if="item.state === '-5' ||item.state === '-4'">
+                <div
+                  class="vote_type"
+                  v-else-if="item.state === '-5' || item.state === '-4'"
+                >
                   <span>监督驳回</span>
                 </div>
                 <div class="vote_type" v-else-if="item.state === '5'">
                   <span>结案通过</span>
                 </div>
-               
               </li>
             </ul>
             <div class="block">
@@ -503,10 +526,14 @@
     <div class="proposaluenc_foot">
       <div class="foot-top">
         <ul class="foot-box">
-           <li>
+          <li>
             <div class="foot-box1">
               <div class="circle">
-                  <img src="@assets/images/footer/github.png" @click="github" style="position:relative;left:10px" />
+                <img
+                  src="@assets/images/footer/github.png"
+                  @click="github"
+                  style="position:relative;left:10px"
+                />
               </div>
             </div>
           </li>
@@ -591,7 +618,7 @@
 </template>
 
 <script>
-import {BASEURL} from '@api/api';
+import { BASEURL } from "@api/api";
 var qs = require("qs");
 import Login from "@components/common/Login";
 import Forget from "@components/common/ForgetPassword";
@@ -642,7 +669,6 @@ export default {
       votebohui: [],
       votebohuinumber: 1,
       bohuitotal: "",
-    
     };
   },
   components: { Login, Forget, Fastoken, headersecond },
@@ -682,9 +708,9 @@ export default {
   },
   mounted() {},
   methods: {
-    headersecond(){
-      this.huiceng=true;
-// console.log(this.$refs.login.check);
+    headersecond() {
+      this.huiceng = true;
+      // console.log(this.$refs.login.check);
     },
     enter(event) {
       // console.log(event);
@@ -700,7 +726,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 0,
             pageNum: this.votealllistnumber,
@@ -718,7 +744,7 @@ export default {
               this.alllisttotal = res.data.result.total;
               // console.log(this.alltotal);
               for (let i = 0; i < res.data.result.list.length; i++) {
-                 if (this.votealllist[i].name.length > 10) {
+                if (this.votealllist[i].name.length > 10) {
                   this.votealllist[i].name =
                     res.data.result.list[i].name.substring(0, 10) + "...";
                 } else {
@@ -807,7 +833,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 0,
             pageNum: this.voteallnumber,
@@ -823,8 +849,7 @@ export default {
           this.alltotal = res.data.result.total;
           // console.log(this.alltotal);
           for (let i = 0; i < res.data.result.list.length; i++) {
-            
-             if (this.voteall[i].name.length > 10) {
+            if (this.voteall[i].name.length > 10) {
               this.voteall[i].name =
                 res.data.result.list[i].name.substring(0, 10) + "...";
             } else {
@@ -859,7 +884,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity",
           qs.stringify({
             type: 1,
             pageNum: this.voteinnumber,
@@ -873,7 +898,7 @@ export default {
           this.intotal = res.data.result.total;
 
           for (let i = 0; i < res.data.result.list.length; i++) {
-             if (this.votein[i].name.length > 7) {
+            if (this.votein[i].name.length > 7) {
               this.votein[i].name =
                 res.data.result.list[i].name.substring(0, 7) + "...";
             } else {
@@ -907,7 +932,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 2,
             pageNum: this.voteendnumber,
@@ -922,7 +947,7 @@ export default {
           this.endtotal = res.data.result.total;
 
           for (let i = 0; i < res.data.result.list.length; i++) {
-             if (this.voteend[i].name.length > 7) {
+            if (this.voteend[i].name.length > 7) {
               this.voteend[i].name =
                 res.data.result.list[i].name.substring(0, 7) + "...";
             } else {
@@ -955,7 +980,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 3,
             pageNum: this.voteagreenumber,
@@ -970,7 +995,7 @@ export default {
           this.agreetotal = res.data.result.total;
 
           for (let i = 0; i < res.data.result.list.length; i++) {
-             if (this.voteagree[i].name.length > 7) {
+            if (this.voteagree[i].name.length > 7) {
               this.voteagree[i].name =
                 res.data.result.list[i].name.substring(0, 7) + "...";
             } else {
@@ -1003,7 +1028,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 4,
             pageNum: this.voterejectnumber,
@@ -1017,7 +1042,7 @@ export default {
           // 页数
           this.rejecttotal = res.data.result.total;
           for (let i = 0; i < res.data.result.list.length; i++) {
-             if (this.votereject[i].name.length > 7) {
+            if (this.votereject[i].name.length > 7) {
               this.votereject[i].name =
                 res.data.result.list[i].name.substring(0, 7) + "...";
             } else {
@@ -1050,7 +1075,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity ",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity ",
           qs.stringify({
             type: 5,
             pageNum: this.votejieannumber,
@@ -1064,11 +1089,11 @@ export default {
           // 页数
           this.jieantotal = res.data.result.total;
           for (let i = 0; i < res.data.result.list.length; i++) {
-             if (this.votejiean[i].name.length > 7) {
+            if (this.votejiean[i].name.length > 7) {
               this.votejiean[i].name =
                 res.data.result.list[i].name.substring(0, 7) + "...";
             } else {
-              this.votejiean[i].name = res.data.result.list[i].name
+              this.votejiean[i].name = res.data.result.list[i].name;
             }
             if (this.votejiean[i].title.length > 7) {
               this.votejiean[i].title =
@@ -1097,7 +1122,7 @@ export default {
         .post(
           // 测试上
           //47.105.215.191/weimi/index/getPhoneCode
-          `${BASEURL}`+"/weimioffice/vote/getAllActivity",
+          `${BASEURL}` + "/weimioffice/vote/getAllActivity",
           qs.stringify({
             type: -5,
             pageNum: this.votebohuinumber,
@@ -1105,7 +1130,7 @@ export default {
           })
         )
         .then((res) => {
-            // console.log(res);
+          // console.log(res);
           // 全部类型
           this.votebohui = res.data.result.list;
           // 页数
@@ -1209,10 +1234,15 @@ export default {
         // window.open(routeData.href, "_blank");
       }
     },
-    goToVoteDetail(index, state,name,createtime) {
+    goToVoteDetail(index, state, name, createtime) {
       this.$router.push({
         path: "/votedetail",
-        query: { activityId: index, state: state,name:name,createtime:createtime },
+        query: {
+          activityId: index,
+          state: state,
+          name: name,
+          createtime: createtime,
+        },
       });
       // console.log(index);
       // let routeData = this.$router.resolve({
@@ -1228,7 +1258,10 @@ export default {
         // setTimeout(() => {
         //   this.$router.push({ path: "/proposal" });
         // }, 3000);
-      } else if (localStorage.getItem("walletAddress")===''||localStorage.getItem("walletAddress")===null) {
+      } else if (
+        localStorage.getItem("walletAddress") === "" ||
+        localStorage.getItem("walletAddress") === null
+      ) {
         this.$message.error("请先绑定您的钱包账户");
       } else {
         let routeData = this.$router.resolve({
@@ -1268,8 +1301,8 @@ export default {
     gotohide() {
       this.show = false;
     },
-      github(){
- window.open("https://github.com/uenctech");
+    github() {
+      window.open("https://github.com/uenctech");
     },
     telegram() {
       window.open("https://t.me/UniversalEnergyChain1");
@@ -1288,7 +1321,6 @@ export default {
 };
 </script>
 <style lang="less">
-
 .kongbai {
   width: 1200px;
   margin: 0 auto;
@@ -1462,8 +1494,8 @@ export default {
   width: 100%;
   height: auto;
   position: relative;
-  .el-tabs__item{
-    padding: 0 16px!important;
+  .el-tabs__item {
+    padding: 0 16px !important;
   }
   .proposaltop {
     height: 150px;
@@ -1558,18 +1590,18 @@ export default {
       width: 1200px;
       height: 300px;
       margin: 0 auto;
+      text-align: right;
       .top_title {
         font-size: 14px;
         font-family: Microsoft YaHei;
         font-weight: 300;
         color: #ffffff;
         position: relative;
-        left: 84.5%;
+      
         top: 270px;
         cursor: pointer;
       }
     }
-
     // 头部内容区域
   }
   .partnerfooter {
@@ -1582,49 +1614,57 @@ export default {
       width: 1200px;
       height: auto;
       margin: 0 auto;
-      .search {
-        width: 260px;
-        height: 31px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        color: white;
-        position: relative;
-        left: 771px;
-        padding-left: 20px;
-        top: 34px;
-        outline: none;
-        border: none;
-        z-index: 30;
-      }
-      .searchimg {
-        position: relative;
-        left: 741px;
 
-        top: 36px;
-        cursor: pointer;
-        z-index: 30;
-      }
-      .searchimg2 {
+      .partnerfooter_ce {
+        width: 393px;
+
         position: relative;
-        left: 837px;
-        top: 37px;
-        cursor: pointer;
+        left: 800px;
+        top: 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         z-index: 30;
-      }
-      .fabu {
-        width: 93px;
-        height: 31px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        position: relative;
-        left: 797px;
-        top: 34px;
-        padding-left: 20px;
-        cursor: pointer;
-        z-index: 30;
-        color: #009fcd;
-        border: none;
-        outline: none;
+        .search {
+          width: 260px;
+          height: 31px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          color: white;
+          padding-left: 20px;
+          outline: none;
+          border: none;
+        }
+        .searchimg {
+          cursor: pointer;
+          position: relative;
+          left: -40px;
+          width: 17px;
+          height: 17px;
+        }
+        .fabu {
+          width: 93px;
+          height: 31px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 16px;
+          cursor: pointer;
+          color: #009fcd;
+          border: none;
+          outline: none;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          margin-top: 2px;
+          .searchimg2 {
+            cursor: pointer;
+            padding-left: 15px;
+          }
+          span {
+            padding-right: 13px;
+          }
+        }
       }
     }
   }

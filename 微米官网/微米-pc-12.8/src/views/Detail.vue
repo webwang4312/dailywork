@@ -47,6 +47,17 @@
             <div class="foot-box1">
               <div class="circle">
                 <img
+                  src="@assets/images/footer/github.png"
+                  @click="github"
+                  style="position:relative;left:10px"
+                />
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="foot-box1">
+              <div class="circle">
+                <img
                   src="@assets/images/footer/telegram.png"
                   @click="telegram"
                 />
@@ -124,7 +135,7 @@
 </template>
 
 <script>
-import {BASEURL} from '@api/api';
+import { BASEURL } from "@api/api";
 import headertop from "../components/common/header";
 //import headerTop from "@components/content/HeaderTop.vue";
 import Qs from "qs";
@@ -211,7 +222,7 @@ export default {
     async getdetaillist() {
       let that = this;
       await that.$http
-        .get(`${BASEURL}`+"/weimioffice/web/content/getContent", {
+        .get(`${BASEURL}` + "/weimioffice/web/content/getContent", {
           params: { content_id: this.id },
           headers: { language: this.nowLang },
         })
@@ -233,6 +244,9 @@ export default {
     },
     gotohide() {
       this.show = false;
+    },
+    github() {
+      window.open("https://github.com/uenctech");
     },
     telegram() {
       window.open("https://t.me/UniversalEnergyChain1");
@@ -311,9 +325,11 @@ export default {
     justify-content: space-between;
     // z-index: 20;
     .foot-box {
+      width: 500px;
       display: flex;
       flex-direction: row;
       position: relative;
+      justify-content: space-between !important;
       img {
         align-content: center;
       }

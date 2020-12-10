@@ -32,7 +32,7 @@
             @click="index()"
             style=" position: relative;top:2px"
           />
-          当前位置：关于社区 > 投票</span
+          当前位置:关于社区>投票</span
         >
       </div>
     </div>
@@ -41,7 +41,7 @@
         <input
           type="text"
           placeholder="请输入标题或名字"
-          class="search"
+          class="searchvote"
           v-model="searchnumber"
           @keyup="enter"
         />
@@ -1277,13 +1277,14 @@ export default {
       width: 1200px;
       height: 300px;
       margin: 0 auto;
+       text-align: right;
       .top_title {
         font-size: 14px;
         font-family: Microsoft YaHei;
         font-weight: 300;
         color: #ffffff;
         position: relative;
-        left: 84%;
+      
         top: 270px;
         cursor: pointer;
       }
@@ -1299,7 +1300,7 @@ export default {
       width: 1200px;
       height: auto;
       margin: 0 auto;
-      .search {
+      .searchvote {
         width: 260px;
         height: 31px;
         background: rgba(255, 255, 255, 0.1);

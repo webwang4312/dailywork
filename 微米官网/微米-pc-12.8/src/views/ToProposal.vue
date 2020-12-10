@@ -137,6 +137,17 @@
     <div class="partneruenc_foot">
       <div class="foot-top">
         <ul class="foot-box">
+           <li>
+            <div class="foot-box1">
+              <div class="circle">
+                <img
+                  src="@assets/images/footer/github.png"
+                  @click="github"
+                  style="position:relative;left:10px"
+                />
+              </div>
+            </div>
+          </li>
           <li>
             <div class="foot-box1">
               <div class="circle">
@@ -354,6 +365,9 @@ export default {
     gotohide() {
       this.show = false;
     },
+     github() {
+      window.open("https://github.com/uenctech");
+    },
     telegram() {
       window.open("https://t.me/UniversalEnergyChain1");
     },
@@ -561,7 +575,14 @@ export default {
     }
   }
 }
-
+@keyframes colorchange {
+  0% {
+    background: rgba(51, 51, 51, 1);
+  }
+  100% {
+    background: rgba(0, 159, 205, 1);
+  }
+}
 // 底部
 .partneruenc_foot {
   width: 100%;
@@ -580,6 +601,8 @@ export default {
     justify-content: space-between;
     // z-index: 20;
     .foot-box {
+      width: 500px;
+      justify-content: space-between;
       display: flex;
       flex-direction: row;
       position: relative;
@@ -646,7 +669,7 @@ export default {
         background: rgba(51, 51, 51, 1);
         border-radius: 50%;
         position: relative;
-        margin-left: 40px;
+      
         margin-top: 30px;
         img {
           cursor: pointer;
@@ -697,7 +720,7 @@ export default {
     flex-direction: row;
     position: absolute;
     top: -97px;
-    left: 35%;
+     left: 42%;
     float: left;
     z-index: 30;
     opacity: 1;

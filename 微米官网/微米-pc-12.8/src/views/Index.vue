@@ -735,12 +735,15 @@ export default {
       if (this.scrollTop > 300) {
         this.show = true;
       }
+     
       if (this.scrollTop > 900) {
         this.showmedia = true;
       }
+     
       if (this.scrollTop > 1400) {
         this.showus = true;
       }
+      
     },
 
     gotoshow() {

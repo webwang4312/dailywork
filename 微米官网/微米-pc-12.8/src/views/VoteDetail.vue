@@ -255,10 +255,10 @@ export default {
   },
   components: { Login, Forget, Fastoken, headerthird, votenumber },
   created() {
-     if (location.href.indexOf("#reloaded") == -1) {
-      location.href = location.href + "#reloaded";
-      location.reload();
-    }
+    //  if (location.href.indexOf("#reloaded") == -1) {
+    //   location.href = location.href + "#reloaded";
+    //   location.reload();
+    // }
     //  console.log(this.$route.query.state);
     this.voteDetail();
     this.countDown();
@@ -596,13 +596,14 @@ export default {
       width: 1200px;
       height: 300px;
       margin: 0 auto;
+        text-align: right;
       .top_title {
         font-size: 14px;
         font-family: Microsoft YaHei;
         font-weight: 300;
         color: #ffffff;
         position: relative;
-        left: 83%;
+      
         top: 270px;
         cursor: pointer;
         span {

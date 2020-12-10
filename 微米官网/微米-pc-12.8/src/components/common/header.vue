@@ -12,42 +12,47 @@
           <div class="header-left">
             <img src="@assets/images/index/logo.png" />
           </div>
-          <button
-            class="selbutton"
-            @click="switchLan()"
-            v-loading.fullscreen.lock="fullscreenLoading"
-          >
-            中 / EN
-          </button>
-          <!-- 头部公共部分 -->
-          <template v-if="!$store.state.username">
-            <span @click="logins" id="loginregister">
-              {{ $t("login[0]") }}</span
+          <div class="navheader_right">
+            <button
+              class="selbutton"
+              @click="switchLan()"
+              v-loading.fullscreen.lock="fullscreenLoading"
             >
-            <!-- <span @click="register" id="loginregister">{{ $t("login[1]") }}</span> -->
-          </template>
-          <div
-            class="header_selsetz"
-            v-if="$store.state.username"
-            @click="iconShow"
-          >
-            <div class="header_selset">
-              <span id="loginregister2">{{ $store.state.username }}</span>
+              中 / EN
+            </button>
+            <!-- 头部公共部分 -->
+            <template v-if="!$store.state.username">
+              <span @click="logins" id="loginregister">
+                {{ $t("login[0]") }}</span
+              >
+              <!-- <span @click="register" id="loginregister">{{ $t("login[1]") }}</span> -->
+            </template>
+            <div
+              class="header_selsetz"
+              v-if="$store.state.username"
+              @click="iconShow"
+            >
+              <div class="header_selset">
+                <span id="loginregister2">{{ $store.state.username }}</span>
 
-              <img
-                src="../../assets/images/header/矩形 38@2x.png"
-                :class="{ header_icon: true, transform: transform }"
-              />
+                <img
+                  src="../../assets/images/header/矩形 38@2x.png"
+                  :class="{ header_icon: true, transform: transform }"
+                />
+              </div>
+
+              <div class="header_ulul" v-show="iconshow" @mouseleave="iconHide">
+                <img src="@assets/images/header/矩形 37.png" alt="" />
+                <ul>
+                  <li @click="fastoken" v-if="watch">绑定钱包</li>
+                  <li @click="fastokensecond" v-else>查看钱包</li>
+                  <div class="fastline"></div>
+                  <li @click="leavelogin">退出登录</li>
+                </ul>
+              </div>
             </div>
-
-            <div class="header_ulul" v-show="iconshow" @mouseleave="iconHide">
-              <img src="@assets/images/header/矩形 37.png" alt="" />
-              <ul>
-                <li @click="fastoken" v-if="watch">绑定钱包</li>
-                <li @click="fastokensecond" v-else>查看钱包</li>
-                <div class="fastline"></div>
-                <li @click="leavelogin">退出登录</li>
-              </ul>
+            <div id="liulanqi" @click="gotochainexplor">
+              {{ $t("liulanqi[0]") }}
             </div>
           </div>
         </div>
@@ -66,24 +71,7 @@
               <div class="div1">{{ item.title }}</div>
               <div class="indexline"></div>
             </li>
-
-            <li
-              id="liulanqi"
-              @click="gotochainexplor"
-              @mouseenter="navehover"
-              @mouseleave="naveleave"
-            >
-              {{ $t("liulanqi[0]") }}
-            </li>
           </ul>
-          <div
-            v-show="naveshover"
-            class="nav_second"
-            @mouseleave="naveleaveabout"
-          >
-            <p>开发者社区</p>
-          
-          </div>
         </div>
       </div>
     </div>
@@ -122,7 +110,6 @@ export default {
       iconshow: false,
       transform: false,
       watch: localStorage.getItem("walletAddress") === "",
-      naveshover: false,
     };
   },
   mounted() {
@@ -159,6 +146,10 @@ export default {
           title: "合作伙伴",
           path: "/partner",
         },
+        {
+          title: "开发者社区",
+          path: "/developer",
+        },
       ];
     }
 
@@ -187,6 +178,10 @@ export default {
         {
           title: "Partner",
           path: "/partner",
+        },
+        {
+          title: "Developer",
+          path: "/developer",
         },
       ];
     }
@@ -260,9 +255,7 @@ export default {
         }
       }
     },
-    naveleaveabout() {
-      this.naveshover = false;
-    },
+
     handleScroll() {
       let scrollTop =
         window.pageYOffset ||
@@ -365,22 +358,6 @@ export default {
 };
 </script>
 <style lang="less">
-.nav_second {
-  width: 180px;
-  height: 100px;
-  background: gray;
-  position: relative;
-  left: 350px;
-  font-size: 20px;
-  line-height: 100px;
-  text-align: center;
-  p:hover{
-     font-size: 18px;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: rgba(0, 159, 205, 1);
-  }
-}
 .sticky {
   width: 100%;
   position: fixed;
@@ -415,66 +392,7 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.header_selsetz {
-  cursor: pointer;
-  .header_ulul {
-    position: absolute;
-    // top: 110px;
-    width: 108px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-size: 18px !important;
-    font-family: PingFang SC;
-    font-weight: 400;
-    color: #ffffff;
-    z-index: 9999;
-    text-align: center;
-    img {
-      width: 108px !important;
-      height: 105px !important;
-    }
-    ul {
-      width: 108px !important;
-      height: 105px !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      margin-top: -105px;
-      li {
-        text-align: center;
-        line-height: 50px;
-      }
-    }
-    div {
-      width: 108px;
-      height: 1px;
-      background: #ffffff;
-      opacity: 0.1;
-    }
-  }
-}
 
-#liulanqi {
-  position: relative;
-  // left: 10px;
-  top: -1px !important;
-  cursor: pointer;
-  text-align: center !important;
-  padding-left: 30px;
-}
-#liulanqi:hover {
-  font-weight: 600;
-  // border-top: 2px solid rgba(0, 159, 205, 1);
-  // color: rgba(0, 159, 205, 1) !important;
-}
-.selbutton {
-  width: 83px !important;
-  height: 36px !important;
-  margin-left: 60%;
-  //PADDING-left: 75%;
-}
 #submit {
   text-align: center;
 }
@@ -556,24 +474,94 @@ button {
     flex-direction: column;
     z-index: 30;
     .headerzong1 {
+      width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-    }
-    //头部左侧
-    .header-left {
-      width: 226px;
-      height: 119px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      img {
-        width: 117.6px;
-        height: 45.6px;
+      .header-left {
+        width: 226px;
+        height: 119px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        img {
+          width: 117.6px;
+          height: 45.6px;
+        }
+      }
+      .navheader_right {
+        width: 35%;
+        display: flex;
+        flex-direction: row;
+        align-items: center !important;
+        justify-content: space-between;
+        .selbutton {
+          width: 83px !important;
+          height: 36px !important;
+          margin-left: 0px !important;
+        }
+        .header_selsetz {
+          cursor: pointer;
+          .header_ulul {
+            position: absolute;
+            // top: 110px;
+            width: 108px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-size: 18px !important;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            z-index: 9999;
+            text-align: center;
+            img {
+              width: 108px !important;
+              height: 105px !important;
+            }
+            ul {
+              width: 108px !important;
+              height: 105px !important;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              margin-top: -105px;
+              li {
+                text-align: center;
+                line-height: 50px;
+              }
+            }
+            div {
+              width: 108px;
+              height: 1px;
+              background: #ffffff;
+              opacity: 0.1;
+            }
+          }
+        }
+        #liulanqi {
+          width: 136px;
+          height: 36px;
+          font-size: 18px;
+          font-family: PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 36px !important;
+          position: relative;
+          // left: 10px;
+          cursor: pointer;
+          text-align: center !important;
+          border: 1px solid #009fcd;
+          border-radius: 5px;
+        }
       }
     }
+
+    //头部左侧
+
     .index_line {
       width: 1200px;
       border: 1px solid rgba(255, 255, 255, 0.1);

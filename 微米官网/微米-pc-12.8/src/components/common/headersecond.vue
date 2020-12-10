@@ -5,62 +5,64 @@
     <fastoken v-if="$store.state.fastoken"></fastoken>
     <fastoken-second v-if="$store.state.fastokensecond"></fastoken-second>
     <!-- 内容部分 -->
-    <div class="headertop">
+    <div class="headertopsecond">
       <div class="headerzong">
         <div class="header-left">
           <img src="@assets/images/index/logo.png" />
         </div>
-        <div id="fen">
-          <ul class="header-right2">
-            <li
-              v-for="(item, i) in nav"
-              :key="i"
-              @click="gorouter(item.path)"
-              :class="{ nav_li: active === i }"
-            >
-              <img :src="item.image" v-if="active === i" />
-              <img :src="item.image2" v-else />
-              <div>{{ item.title }}</div>
-            </li>
-          </ul>
-        </div>
-        <button
-          class="selbuttons"
-          @click="switchLan()"
-          v-loading.fullscreen.lock="fullscreenLoading"
-        >
-          中 / EN
-        </button>
-
-        <div class="loginregister">
-          <!-- 头部公共部分 -->
-          <template v-if="!$store.state.username">
-            <span @click="logins"> {{ $t("login[0]") }}</span>
-            <!-- <span @click="register">{{ $t("login[1]") }}</span> -->
-          </template>
-        </div>
-        <div
-          class="header_selsetz"
-          v-if="$store.state.username"
-          @click="iconShow"
-        >
-          <div class="header_selset">
-            <span id="loginregister">{{ $store.state.username }}</span>
-
-            <img
-              src="../../assets/images/header/矩形 38@2x.png"
-              :class="{ header_icon: true, transform: transform }"
-            />
-          </div>
-
-          <div class="header_ulul" v-if="iconshow" @mouseleave="iconHide">
-            <img src="@assets/images/header/矩形 37.png" alt="" />
-            <ul>
-              <li @click="fastoken" v-if="watch">绑定钱包</li>
-              <li @click="fastokensecond" v-else>查看钱包</li>
-              <div class="fastline"></div>
-              <li @click="leavelogin">退出登录</li>
+        <div class="headersecond-right">
+          <div id="fen">
+            <ul class="header-right2">
+              <li
+                v-for="(item, i) in nav"
+                :key="i"
+                @click="gorouter(item.path)"
+                :class="{ nav_li: active === i }"
+              >
+                <img :src="item.image" v-if="active === i" />
+                <img :src="item.image2" v-else />
+                <div>{{ item.title }}</div>
+              </li>
             </ul>
+          </div>
+          <button
+            class="selbuttons"
+            @click="switchLan()"
+            v-loading.fullscreen.lock="fullscreenLoading"
+          >
+            中 / EN
+          </button>
+
+          <div class="loginregister">
+            <!-- 头部公共部分 -->
+            <template v-if="!$store.state.username">
+              <span @click="logins"> {{ $t("login[0]") }}</span>
+              <!-- <span @click="register">{{ $t("login[1]") }}</span> -->
+            </template>
+          </div>
+          <div
+            class="header_selsetz"
+            v-if="$store.state.username"
+            @click="iconShow"
+          >
+            <div class="header_selset">
+              <span id="loginregister">{{ $store.state.username }}</span>
+
+              <img
+                src="../../assets/images/header/矩形 38@2x.png"
+                :class="{ header_icon: true, transform: transform }"
+              />
+            </div>
+
+            <div class="header_ululs" v-if="iconshow" @mouseleave="iconHide">
+              <img src="@assets/images/header/矩形 37.png" alt="" />
+              <ul>
+                <li @click="fastoken" v-if="watch">绑定钱包</li>
+                <li @click="fastokensecond" v-else>查看钱包</li>
+                <div class="fastline"></div>
+                <li @click="leavelogin">退出登录</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -269,15 +271,7 @@ export default {
     color: #009fcd;
     line-height: 14px;
   }
-  .selbuttons {
-    width: 83px !important;
-    height: 36px !important;
-    margin-left: -20px !important;
-    line-height: 20px !important;
-    background: #333333;
-    outline: none;
-    border: none;
-  }
+
   .transform {
     transform: rotate(0deg) !important;
   }
@@ -285,24 +279,16 @@ export default {
   .header_selset {
     display: flex;
     flex-direction: row;
-    width: 100px;
+   
   }
-  #fen {
-    width: 448px;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin-left: 400px;
-  }
+
   .header_icon {
     width: 12px;
     height: 7px;
     transform: rotate(-90deg);
     position: relative;
     left: 5px;
-    top:3px !important;
+    top: 3px !important;
   }
   .nav_li {
     color: rgba(0, 159, 205, 1) !important;
@@ -312,21 +298,24 @@ export default {
     border-right: none !important;
     padding-bottom: 5px;
   }
-  .headertop {
+  .headertopsecond {
     width: 1200px !important;
     height: 200px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between!important;
     align-items: center;
     color: #ffffff;
     margin: 0 auto;
+
     .headerzong {
-      width: 1200px;
+      width: 1200px !important;
       height: 200px;
       //background-color: yellow;
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-content: space-between !important;
       //头部左侧
       .header-left {
         width: 147.8px;
@@ -336,10 +325,49 @@ export default {
           height: 45.6px;
         }
       }
+      .headersecond-right {
+        width: auto;
+        min-width: 520px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center !important;
+        #fen {
+          width: auto;
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+        }
+        .selbuttons {
+          width: 83px !important;
+          height: 36px !important;
+          background: #333333;
+          outline: none;
+          border: none;
+          margin-left: 0px !important;
+          border-radius: 5px;
+        }
+        .loginregister {
+          line-height: 13px !important;
+
+          span {
+            cursor: pointer;
+            width: 34px;
+            height: 17px;
+            font-size: 18px;
+            font-family: PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            margin-left: 74px;
+          }
+        }
+      }
       .header-right2 {
         width: 267px !important;
-         display: flex;
-          flex-direction: row;
+        display: flex;
+        flex-direction: row;
 
         li:nth-child(2) {
         }
@@ -371,10 +399,10 @@ export default {
         height: 200px;
         line-height: 200px;
         margin: 0 auto;
-        width: 108px;
+      
         text-align: center;
-       
-        .header_ulul {
+
+        .header_ululs {
           position: relative;
           top: 10px;
           width: 108px;
@@ -405,21 +433,6 @@ export default {
             background: #ffffff;
             opacity: 0.1;
           }
-        }
-      }
-      .loginregister {
-        line-height: 13px !important;
-        position: relative;
-        left: -6px;
-        span {
-          cursor: pointer;
-          width: 34px;
-          height: 17px;
-          font-size: 18px;
-          font-family: PingFang SC;
-          font-weight: 400;
-          color: #ffffff;
-          margin-left: 74px;
         }
       }
     }

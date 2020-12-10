@@ -74,7 +74,7 @@
               </div>
             </el-collapse-item>
           </el-collapse> -->
-          <div class="block">
+          <div class="blocks">
             <Page
               :total="totalNum"
               :page-size="7"
@@ -660,7 +660,7 @@ button {
             }
           }
         }
-        .block {
+        .blocks {
           position: relative;
           top: 80px;
 
