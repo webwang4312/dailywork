@@ -2,7 +2,6 @@
   <div id="app">
     
     <router-view v-if="isRouterAlive"></router-view>
-     <router-view v-else></router-view>
   </div>
 </template>
 

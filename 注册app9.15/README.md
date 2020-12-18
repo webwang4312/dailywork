@@ -1,5 +1,6 @@
 # zhuceapp
 注册app
+ //12.9测试版本47.98.110.210
 ## Project setup
 ```
 npm install

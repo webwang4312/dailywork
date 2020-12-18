@@ -1,5 +1,6 @@
 # textone
 微米官网手机端源代码
+12.14修改议事部人员3人变5人，监督部7人变3人,修改了议事同意阶段的样式,APP.VUE修改reload
 ## Project setup
 ```
 npm install

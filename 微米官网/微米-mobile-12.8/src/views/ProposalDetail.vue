@@ -127,12 +127,7 @@
             <div class="vote_vote_top">
               <div></div>
               <div>议事阶段</div>
-            </div>
-
-            <div class="bohui"></div>
-            <div class="agreereject_detail " id="display">
-              <div class="finish2"></div>
-              <div>
+               <div id="bohuir">
                 <img
                   src="../assets/images/detail/组 1895.png"
                   class="bohuiimg"
@@ -141,6 +136,12 @@
                   审议同意
                 </span>
               </div>
+            </div>
+
+            <div class="bohui"></div>
+            <div class="agreereject_detail " id="display">
+              <div class="finish2"></div>
+             
             </div>
           </div>
         </div>
@@ -728,14 +729,16 @@ export default {
           { headers: { token: localStorage.getItem("token") } }
         )
         .then((res) => {
-          // console.log(res);
+           
+          //  console.log(res);
           if (res.data.code === 200) {
             this.$message.success(res.data.result);
             //  setTimeout(this.deley(), 3000);
-            this.reload();
+           this.reload();
           } else {
             // setTimeout(this.deley(), 3000);
             this.$message.error(res.data.result);
+          
           }
         });
       // this.$store.commit("voteNumber");
@@ -757,12 +760,15 @@ export default {
           { headers: { token: localStorage.getItem("token") } }
         )
         .then((res) => {
-          //  console.log(res);
+            // console.log(res);
           if (res.data.code === 200) {
             this.$message.success(res.data.result);
-            this.reload();
+             this.reload();
           } else {
-            this.$message.error(res.data.result);
+              this.$message.error(res.data.result);
+      
+        // console.log('cuowu')
+          
           }
         });
       // this.$store.commit("voteNumber");
@@ -1123,7 +1129,7 @@ export default {
               this.actionstate = true;
               //    result.level2.prosCount=2;
               // result.level2.consCount=0;
-              if (result.level2.prosCount + result.level2.consCount === 3) {
+              if (result.level2.prosCount + result.level2.consCount === 5) {
                 this.yishistate = false;
                 if (result.level2.prosCount > result.level2.consCount) {
                   this.yishiagree = true;
@@ -1170,7 +1176,7 @@ export default {
               this.actionagree = false;
               this.actionreject = false;
 
-              if (result.level4.prosCount + result.level4.consCount === 7) {
+              if (result.level4.prosCount + result.level4.consCount === 3) {
                 this.jieanstate = false;
                 if (result.level4.prosCount > result.level4.consCount) {
                   this.jieanagree = true;
@@ -1210,7 +1216,7 @@ export default {
             // result.endTime = 1803252500000;
             else if (result.state == 2 || result.state == -3) {
               this.actionstate = true;
-              var date = Date.parse(new Date());
+              var date =result.nowTime;
               // console.log(date);
               if (date - result.endTime >= 0) {
                 this.toupiaostate = false;
