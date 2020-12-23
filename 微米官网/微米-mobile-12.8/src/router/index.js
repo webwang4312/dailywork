@@ -68,34 +68,34 @@ const routes = [{
     path: "/proposal",
     name: "proposal",
     component: () =>
-        import("../views/Proposal.vue"),
+        import("../views/proposal/Proposal.vue"),
 },
 {
     path: "/proposaldetail",
     name: "proposaldetail",
     component: () =>
-        import("../views/ProposalDetail.vue"),
+        import("../views/proposal/ProposalDetail.vue"),
 
 },
 {
     path: "/toproposal",
     name: "toproposal",
     component: () =>
-        import("../views/Toproposal.vue"),
+        import("../views/proposal/Toproposal.vue"),
 
 },
 {
     path: "/vote",
     name: "vote",
     component: () =>
-        import("../views/Vote.vue"),
+        import("../views/vote/Vote.vue"),
 
 },
 {
     path: "/votedetail",
     name: "votedetail",
     component: () =>
-        import("../views/VoteDetail.vue"),
+        import("../views/vote/VoteDetail.vue"),
 
 },
 
